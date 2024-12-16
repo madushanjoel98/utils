@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        .kanban-board {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .kanban-column {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .kanban-task {
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: grab;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Kanban Board</h1>
+        <div class="form">
+            <input class="form-control" placeholder="Enter Column Name" id="columnName">
+            <input class="form-control" placeholder="Enter Column ID" id="columnId">
+            <button class="btn btn-success" onclick="addNewColumn()">Add New Column</button>
+        </div>
+        
+        <div class="kanban-board">
+            <div class="kanban-column" id="todo">
+                <h5 class="text-center bg-primary text-white py-2 rounded">To Do</h5>
+            </div>
+            <div class="kanban-column" id="progress">
+                <h5 class="text-center bg-warning text-dark py-2 rounded">In Progress</h5>
+            </div>
+            <div class="kanban-column" id="done">
+                <h5 class="text-center bg-success text-white py-2 rounded">Done</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function () {
+            $(".kanban-column").sortable({
+                connectWith: ".kanban-column",
+                placeholder: "ui-state-highlight",
+                forcePlaceholderSize: true,
+                tolerance: "pointer",
+                stop: function (event, ui) {
+                    const movedTaskId = ui.item.attr("id");
+                    const newColumnId = ui.item.parent().attr("id");
+                    console.log("Task moved:", movedTaskId, "to column:", newColumnId);
+                },
+            }).disableSelection();
+        });
+
+        $(document).ready(function () {
+            loadInitialTasks();
+        });
+
+        function loadTasks(taskId, title, deadline, priority, status) {
+            const statusClasses = { 1: "bg-primary", 2: "bg-warning", 3: "bg-success" };
+            const columnId = status === 1 ? "todo" : status === 2 ? "progress" : status === 3 ? "done" : "";
+            const taskTemplate = `
+                <div class="kanban-task" id="task-${taskId}">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title ${statusClasses[status]} text-white">${title}</h5>
+                            <p class="card-text">Deadline: ${deadline}</p>
+                            <p class="card-text">Priority: ${priority}</p>
+                            <button class="btn btn-sm btn-danger" onclick="deleteTask('task-${taskId}')">Delete</button>
+                        </div>
+                    </div>
+                </div>`;
+            $(`#${columnId}`).append(taskTemplate);
+        }
+
+        function loadInitialTasks() {
+            const tasks = [
+                { id: 1, title: "Design Home Page", deadline: "2024-12-10", status: 1 },
+                { id: 2, title: "Develop Backend API", deadline: "2024-12-12", status: 2 },
+                { id: 3, title: "Test User Login", deadline: "2024-12-15", status: 3 }
+            ];
+            tasks.forEach(task => {
+                loadTasks(task.id, task.title, task.deadline, "High", task.status);
+            });
+        }
+
+        function addNewColumn() {
+            const columnName = $("#columnName").val().trim();
+            const columnId = $("#columnId").val().trim();
+
+            if (!columnName || !columnId) {
+                alert("Please fill out both fields.");
+                return;
+            }
+
+            const columnTemplate = `
+                <div class="kanban-column" id="${columnId}">
+                    <h5 class="text-center bg-info text-white py-2 rounded">${columnName}</h5>
+                </div>`;
+            $(".kanban-board").append(columnTemplate);
+
+            $(".kanban-column").sortable({
+                connectWith: ".kanban-column",
+                placeholder: "ui-state-highlight",
+                forcePlaceholderSize: true,
+                tolerance: "pointer"
+            }).disableSelection();
+
+            $("#columnName").val("");
+            $("#columnId").val("");
+        }
+
+        function deleteTask(taskId) {
+            $(`#${taskId}`).fadeOut(300, function () {
+                $(this).remove();
+            });
+        }
+    </script>
+</body>
+
+</html>

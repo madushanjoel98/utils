@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Chat Reader</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .chat-box {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .message {
+            padding: 10px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        .message:last-child {
+            border-bottom: none;
+        }
+        .timestamp {
+            color: #6c757d;
+            font-size: 0.85rem;
+        }
+        .sender {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .text {
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="whatsch">
+    <h1 class="text-center mb-4" ><i class="fa fa-arrow-left" style=" cursor: pointer;" aria-hidden="true" onclick="toogs('whatsch')"></i> WhatsApp Chat Reader</h1>
+
+    <!-- File Upload Section -->
+    <div class="mb-4">
+        <label for="fileInput" class="form-label">Upload your WhatsApp Export (.txt) file</label>
+        <input type="file" id="fileInput" class="form-control">
+    </div>
+
+    <!-- Filters Section -->
+    <div class="mb-4" id="filez">
+        <label for="dateFilter" class="form-label">Filter by Date</label>
+        <input type="date" id="dateFilter" class="form-control mb-3">
+
+        <label for="messageFilter" class="form-label">Search Messages</label>
+        <input type="text" id="messageFilter" class="form-control" placeholder="Enter message text">
+    </div>
+
+    <!-- Chat Display Section -->
+    <div class="chat-box" id="chatBox">
+        <p class="text-center text-muted">Upload a .txt file to see the chat messages here.</p>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    let messages = []; // Store parsed messages for filtering
+
+    $(document).ready(function() {
+        $("#filez").hide();
+        $('#fileInput').on('change', function(event) {
+            const file = event.target.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const content = e.target.result;
+                    displayChat(content);
+                    $("#filez").show();
+                };
+                reader.readAsText(file);
+            } else {
+                alert('Please upload a valid .txt file.');
+            }
+        });
+
+        $('#dateFilter').on('change', function() {
+            filterChat();
+        });
+
+        $('#messageFilter').on('input', function() {
+            filterChat();
+        });
+    });
+
+    function displayChat(content) {
+        const lines = content.split('\n');
+        messages = []; // Reset messages array
+        
+        const chatBox = $('#chatBox');
+        chatBox.empty(); // Clear existing content
+
+        lines.forEach(line => {
+            const messageData = parseMessage(line);
+            if (messageData) {
+                messages.push(messageData);
+            }
+        });
+
+        renderChat(messages);
+    }
+
+    function renderChat(messages) {
+        const chatBox = $('#chatBox');
+        chatBox.empty();
+
+        if (messages.length === 0) {
+            chatBox.append('<p class="text-center text-muted">No messages match the filter criteria.</p>');
+            return;
+        }
+
+        messages.forEach(messageData => {
+            const messageHTML = `
+                <div class="message">
+                    <div class="timestamp">${messageData.timestamp}</div>
+                    <div class="sender">${messageData.sender}</div>
+                    <div class="text">${messageData.text}</div>
+                </div>
+            `;
+            chatBox.append(messageHTML);
+        });
+    }
+
+    function filterChat() {
+        const dateFilter = $('#dateFilter').val();
+        const messageFilter = $('#messageFilter').val().toLowerCase();
+
+        const filteredMessages = messages.filter(message => {
+            const matchesDate = dateFilter ? message.timestamp.startsWith(dateFilter) : true;
+            const matchesMessage = messageFilter ? message.text.toLowerCase().includes(messageFilter) : true;
+            return matchesDate && matchesMessage;
+        });
+
+        renderChat(filteredMessages);
+    }
+
+    function parseMessage(line) {
+        // Updated pattern to handle the given WhatsApp message format (e.g., "08/05/2024, 3:35 pm - Sender: Message")
+        const messagePattern = /^(\d{1,2}\/\d{1,2}\/\d{4}),\s(\d{1,2}:\d{2}\s[apAP][mM])\s-\s(.*?):\s(.+)$/;
+        const match = messagePattern.exec(line);
+
+        if (match) {
+            return {
+                timestamp: `${match[1]} ${match[2]}`,
+                sender: match[3],
+                text: match[4]
+            };
+        } 
+        return null; // Line does not match the expected pattern
+    }
+</script>
+
+</body>
+</html>
