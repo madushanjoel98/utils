@@ -84,102 +84,109 @@
     let messages = []; // Store parsed messages for filtering
 
     $(document).ready(function() {
-        $("#filez").hide();
-        $(".filter").toggle();
-        $(".loader").hide();
-        $('#fileInput').on('change', function(event) {
-            const file = event.target.files[0];
-            
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const content = e.target.result;
-                    displayChat(content);
-                    $("#filez").show();
-                };
-                reader.readAsText(file);
-            } else {
-                alert('Please upload a valid .txt file.');
-            }
-        });
-
-        $('#dateFilter').on('change', function() {
-            filterChat();
-        });
-
-        $('#messageFilter').on('input', function() {
-            filterChat();
-        });
+    $("#filez").hide();
+    $(".filter").toggle();
+    $(".loader").hide();
+    
+    $('#fileInput').on('change', function(event) {
+        const file = event.target.files[0];
+        
+        if (file) {
+            $(".loader").show(); // Show loader before file processing begins
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                displayChat(content);
+                $("#filez").show();
+            };
+            reader.readAsText(file);
+        } else {
+            alert('Please upload a valid .txt file.');
+        }
     });
 
-    function displayChat(content) {
-        const lines = content.split('\n');
-        messages = []; // Reset messages array
-        
-        const chatBox = $('#chatBox');
-        chatBox.empty(); // Clear existing content
+    $('#dateFilter').on('change', function() {
+        $(".loader").show(); // Show loader during filter
+        filterChat();
+    });
 
-        lines.forEach(line => {
-            const messageData = parseMessage(line);
-            if (messageData) {
-                messages.push(messageData);
-            }
-        });
+    $('#messageFilter').on('input', function() {
+        $(".loader").show(); // Show loader during filter
+        filterChat();
+    });
+});
 
-        renderChat(messages);
-    }
+function displayChat(content) {
+    const lines = content.split('\n');
+    messages = []; // Reset messages array
 
-    function renderChat(messages) {
-        $(".loader").show();
-        const chatBox = $('#chatBox');
-        chatBox.empty();
+    const chatBox = $('#chatBox');
+    chatBox.empty(); // Clear existing content
 
-        if (messages.length === 0) {
-            $(".loader").hide();
-            chatBox.append('<p class="text-center text-muted">No messages match the filter criteria.</p>');
-            return;
+    lines.forEach(line => {
+        const messageData = parseMessage(line);
+        if (messageData) {
+            messages.push(messageData);
         }
+    });
 
-        messages.forEach(messageData => {
-            const messageHTML = `
-                <div class="message">
-                    <div class="timestamp">${messageData.timestamp}</div>
-                    <div class="sender">${messageData.sender}</div>
-                    <div class="text">${messageData.text}</div>
-                </div>
-            `;
-            chatBox.append(messageHTML);
-        });
-        $(".loader").hide();
+    renderChat(messages);
+    $(".loader").hide(); // Hide loader after chat is rendered
+}
+
+function renderChat(messages) {
+    const chatBox = $('#chatBox');
+    chatBox.empty();
+
+    if (messages.length === 0) {
+        $(".loader").hide(); // Hide loader when no messages to display
+        chatBox.append('<p class="text-center text-muted">No messages match the filter criteria.</p>');
+        return;
     }
 
-    function filterChat() {
-        const dateFilter = $('#dateFilter').val();
-        const messageFilter = $('#messageFilter').val().toLowerCase();
+    messages.forEach(messageData => {
+        const messageHTML = `
+            <div class="message">
+                <div class="timestamp">${messageData.timestamp}</div>
+                <div class="sender">${messageData.sender}</div>
+                <div class="text">${messageData.text}</div>
+            </div>
+        `;
+        chatBox.append(messageHTML);
+    });
 
-        const filteredMessages = messages.filter(message => {
-            const matchesDate = dateFilter ? message.timestamp.startsWith(dateFilter) : true;
-            const matchesMessage = messageFilter ? message.text.toLowerCase().includes(messageFilter) : true;
-            return matchesDate && matchesMessage;
-        });
+    $(".loader").hide(); // Hide loader once chat is displayed
+}
 
-        renderChat(filteredMessages);
+function filterChat() {
+    const dateFilter = $('#dateFilter').val();
+    const messageFilter = $('#messageFilter').val().toLowerCase();
+
+    const filteredMessages = messages.filter(message => {
+        const matchesDate = dateFilter ? message.timestamp.startsWith(dateFilter) : true;
+        const matchesMessage = messageFilter ? message.text.toLowerCase().includes(messageFilter) : true;
+        return matchesDate && matchesMessage;
+    });
+
+    renderChat(filteredMessages);
+    $(".loader").hide(); // Hide loader once filtering is done
+}
+
+function parseMessage(line) {
+    // Updated pattern to handle the given WhatsApp message format (e.g., "08/05/2024, 3:35 pm - Sender: Message")
+    const messagePattern = /^(\d{1,2}\/\d{1,2}\/\d{4}),\s(\d{1,2}:\d{2}\s[apAP][mM])\s-\s(.*?):\s(.+)$/;
+    const match = messagePattern.exec(line);
+
+    if (match) {
+        return {
+            timestamp: `${match[1]} ${match[2]}`,
+            sender: match[3],
+            text: match[4]
+        };
     }
+    return null; // Line does not match the expected pattern
+}
 
-    function parseMessage(line) {
-        // Updated pattern to handle the given WhatsApp message format (e.g., "08/05/2024, 3:35 pm - Sender: Message")
-        const messagePattern = /^(\d{1,2}\/\d{1,2}\/\d{4}),\s(\d{1,2}:\d{2}\s[apAP][mM])\s-\s(.*?):\s(.+)$/;
-        const match = messagePattern.exec(line);
-
-        if (match) {
-            return {
-                timestamp: `${match[1]} ${match[2]}`,
-                sender: match[3],
-                text: match[4]
-            };
-        } 
-        return null; // Line does not match the expected pattern
-    }
 </script>
 
 </body>
