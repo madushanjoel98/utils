@@ -6,7 +6,7 @@
     <title>Utils Tools</title>
     <link rel="shortcut icon" href="img/settings.png"image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="Base64 Decoder, Base64 Encoder, WhatsApp Chat Viewer, WhatsApp Reader, WhatsApp Export Viewer, WhatsApp Text Analyzer, Morse Code Converter, Morse Encoder, Morse Decoder, Morse Translator, Encrypt, Decrypt, BMI Calculator, Calories Calculator, Water Intake Calculator, Health Tracker, Health Calculator, Daily Water Needs, Calorie Needs, Weight Management, Fitness Tools, Online Tools, File Reader, Chat Export Viewer, WhatsApp Export Analyzer, BMI Checker, Calorie Counter, Healthy Living, Body Mass Index, Fitness Calculator, Online Encoder, Online Decoder, Encryption Tool, Decryption Tool, Health and Fitness, Wellness Tools">
+    <meta name="keywords" content="Base64 Decoder, Base64 Encoder, WhatsApp Chat Viewer, WhatsApp Reader, WhatsApp Export Viewer, WhatsApp Text Analyzer, Morse Code Converter, Morse Encoder, Morse Decoder, Morse Translator, Encrypt, Decrypt, BMI Calculator, Calories Calculator, Water Intake Calculator, Health Tracker, Health Calculator, Daily Water Needs, Calorie Needs, Weight Management, Fitness Tools, Online Tools, File Reader, Chat Export Viewer, WhatsApp Export Analyzer, BMI Checker, Calorie Counter, Healthy Living, Body Mass Index, Fitness Calculator, Online Encoder, Online Decoder, Encryption Tool, Decryption Tool, Health and Fitness, Wellness Tools,QR,Qr genrator,qr">
 
     <meta name="description" content="Explore our versatile online tools, including a WhatsApp Chat Viewer for exported chats, Base64 encoder/decoder, Morse code translator, and more. Fast, secure, and user-friendly utilities for your daily needs">
     <meta name="google-site-verification" content="jouBDpAkU1WHX_vq9R_HBq6UGym2Kkrwr_NYwfzkgB8" />
@@ -17,6 +17,7 @@
     <link href="css/main.css" rel="stylesheet">
     <script src="js/encoder.js"></script>
     <script src="js/solidmac.js"></script>
+    <script src="js/qrscript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/ag-charts-enterprise@11.0.0/dist/umd/ag-charts-enterprise.js?t=1733932964813"></script>
     <script src="/charts/vanilla/radial-gauge/examples/simple-radial-gauge/main.js"></script>
 </head>
@@ -118,7 +119,29 @@
                         
                 
                     </div>
-                     
+                    <div class="col p-2 m-4  text-white">
+             
+                      <div class="cards  shadow qrbg" onclick="loadQRgen('')">
+                          <div class="cards-content">
+                            <div class="cards-top">
+                              <span class="cards-title">QR Generator</span>
+                          
+                            </div>
+                            <div class="cards-bottom">
+                            
+                              <svg width="32" viewBox="0 -960 960 960" height="32" xmlns="http://www.w3.org/2000/svg"><path d="M226-160q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19ZM226-414q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19ZM226-668q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Z"></path></svg>
+                            </div>
+                          </div>
+                          <div class="cards-image">
+                           <img src="img/qr.png" width="70px">
+                          </div>
+                        </div>
+                      
+              
+                  </div>
+
+
+                    
                  </div>
 
 
@@ -178,6 +201,10 @@
           $("#connts").toggle();
         $("#main").load("health.html");
 
+     }
+     function loadQRgen() {  
+      $("#connts").toggle();
+      $("#main").load("qr.html");
      }
      function toogs(id) {
           location.reload();

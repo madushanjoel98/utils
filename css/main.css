@@ -93,7 +93,9 @@
   .oldbg{
      background-color: antiquewhite;
   }
-
+.qrbg{
+  background-color: rgb(250, 211, 160);
+}
   .loader {
     border: 16px solid #f3f3f3;
     border-radius: 50%;

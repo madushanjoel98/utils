@@ -1,0 +1,39 @@
+
+<div class="container">
+    <h1><i class="fa fa-arrow-left" style=" cursor: pointer;" aria-hidden="true" onclick="toogs('whatsch')"></i> QR Code Generator</h1>
+   
+    <input class="form-control" type="text" id="qr-input" placeholder="Enter text or URL">
+    <br>
+    <button id="generate-btn" class="btn btn-primary ">Generate QR Code</button>
+    <br>
+    <center>
+        <canvas id="qrcode"></canvas>
+
+    </center>
+ 
+  </div>
+  <script>
+    // script.js
+$(document).ready(function () {
+    $('#generate-btn').click(function () {
+      const text = $('#qr-input').val().trim();
+  
+      if (!text) {
+        alert('Please enter text or URL to generate a QR Code.');
+        return;
+      }
+  
+      // Clear previous QR code
+      $('#qrcode').empty();
+  
+      // Generate new QR code
+      QRCode.toCanvas(document.getElementById('qrcode'), text, {
+        width: 200,
+        margin: 2,
+      }, function (error) {
+        if (error) console.error(error);
+      });
+    });
+  });
+  
+  </script>
