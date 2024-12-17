@@ -6,6 +6,7 @@ function OnchangeDarkmood() {
     if ($('#night').prop('checked')) {
         localStorage.setItem(darkmode,1);
         $( "body" ).addClass( "bg-dark text-white" );
+        $( ".card" ).addClass( "bg-dark text-white" );
         console.log('Checkbox is checked');
     } else {
         localStorage.setItem(darkmode,0);
