@@ -85,8 +85,11 @@
       background-color: rgb(144, 238, 225);
   }
   .morsebg{
-      background-color: rgb(253, 73, 133);
+      background-color: rgb(127, 73, 253);
   }
+  .healthbg{
+    background-color: rgb(255, 35, 46);
+}
   .oldbg{
      background-color: antiquewhite;
   }
@@ -219,4 +222,62 @@
   
   .input:checked + .slider:before {
     transform: translateX(30px);
+  }
+
+  .healthcard {
+    width: 100%;
+   
+    height: 170px;
+    background: #353535;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    backdrop-filter: blur(10px);
+    transition: 0.5s ease-in-out;
+  }
+  
+  .healthcard:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+  
+  .healthimg {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    border-radius: 10px;
+   
+  }
+  
+  .healthcard:hover > .healthimg {
+    transition: 0.5s ease-in-out;
+   
+  }
+  
+  .healthtextBox {
+    width: calc(100% - 90px);
+    margin-left: 10px;
+    color: white;
+    font-family: 'healthpohealthphealthpins' sans-serif;
+  }
+  
+  .healthtextContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .shealthpan {
+    font-size: 10px;
+  }
+  
+  .health1 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .healthp {
+    font-size: 12px;
+    font-weight: lighter;
   }
