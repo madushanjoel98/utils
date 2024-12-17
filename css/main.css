@@ -1,0 +1,113 @@
+.center {
+    margin: auto;
+    width: 50%;
+  
+    padding: 10px;
+  }
+  /* From Uiverse.io by Samalander0 */ 
+  .cards {
+    width: 320px;
+   
+    color: black;
+    position: relative;
+    border-radius: 2.5em;
+    padding: 2em;
+    transition: transform 0.4s ease;
+  }
+  
+  .cards .cards-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5em;
+    height: 100%;
+    transition: transform 0.4s ease;
+  }
+  
+  .cards .cards-top, .cards .cards-bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cards .cards-top p, .cards .cards-top .cards-title, .cards .cards-bottom p, .cards .cards-bottom .cards-title {
+    margin: 0;
+  }
+  
+  .cards .cards-title {
+    font-weight: bold;
+  }
+  
+  .cards .cards-top p, .cards .cards-bottom p {
+    font-weight: 600;
+  }
+  
+  .cards .cards-bottom {
+    align-items: flex-end;
+  }
+  
+  .cards .cards-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+  }
+  
+  .cards .cards-image svg {
+    width: 4em;
+    height: 4em;
+    transition: transform 0.4s ease;
+  }
+  
+  .cards:hover {
+    cursor: pointer;
+    transform: scale(0.97);
+  }
+  
+  .cards:hover .cards-content {
+    transform: scale(0.96);
+  }
+  
+  .cards:hover .cards-image svg {
+    transform: scale(1.05);
+  }
+  
+  .cards:active {
+    transform: scale(0.9);
+  }
+  .whatsapp{
+      background-color: lightgreen;
+  }
+  .encryptionsd{
+      background-color: rgb(144, 238, 225);
+  }
+  .morsebg{
+      background-color: rgb(253, 73, 133);
+  }
+  .oldbg{
+     background-color: antiquewhite;
+  }
+
+  .loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

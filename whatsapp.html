@@ -55,14 +55,18 @@
         <label for="fileInput" class="form-label">Upload your WhatsApp Export (.txt) file</label>
         <input type="file" id="fileInput" class="form-control">
     </div>
-
+<center>  <div class="loader"></div></center>
     <!-- Filters Section -->
     <div class="mb-4" id="filez">
+        <button class="btn btn-primary" onclick="$('.filter').toggle();">Filter</button>
+      <div class="filter">
         <label for="dateFilter" class="form-label">Filter by Date</label>
         <input type="date" id="dateFilter" class="form-control mb-3">
 
         <label for="messageFilter" class="form-label">Search Messages</label>
         <input type="text" id="messageFilter" class="form-control" placeholder="Enter message text">
+      </div>
+       
     </div>
 
     <!-- Chat Display Section -->
@@ -81,6 +85,8 @@
 
     $(document).ready(function() {
         $("#filez").hide();
+        $(".filter").toggle();
+        $(".loader").hide();
         $('#fileInput').on('change', function(event) {
             const file = event.target.files[0];
             
@@ -124,10 +130,12 @@
     }
 
     function renderChat(messages) {
+        $(".loader").show();
         const chatBox = $('#chatBox');
         chatBox.empty();
 
         if (messages.length === 0) {
+            $(".loader").hide();
             chatBox.append('<p class="text-center text-muted">No messages match the filter criteria.</p>');
             return;
         }
@@ -142,6 +150,7 @@
             `;
             chatBox.append(messageHTML);
         });
+        $(".loader").hide();
     }
 
     function filterChat() {
