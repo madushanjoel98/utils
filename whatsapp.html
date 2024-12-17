@@ -135,6 +135,7 @@ function displayChat(content) {
 }
 
 function renderChat(messages) {
+    $(".loader").show(); // Hide loader once chat is displayed
     const chatBox = $('#chatBox');
     chatBox.empty();
 
@@ -169,7 +170,7 @@ function filterChat() {
     });
 
     renderChat(filteredMessages);
-    $(".loader").hide(); // Hide loader once filtering is done
+  
 }
 
 function parseMessage(line) {
