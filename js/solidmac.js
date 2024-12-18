@@ -28,3 +28,8 @@ if(  localStorage.getItem(darkmode) == 1 ){
 }
 
   }
+
+  function whatsNew() { 
+
+    
+   }
