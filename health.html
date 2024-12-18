@@ -1,14 +1,72 @@
 <h1><i class="fa fa-arrow-left" style=" cursor: pointer;" aria-hidden="true" onclick="toogs('whatsch')"></i> Health</h1>
+<style>
+    /* From Uiverse.io by Pradeepsaranbishnoi */
+    :focus {
+        outline: 0;
+        border-color: #2260ff;
+        box-shadow: 0 0 0 4px #b5c9fc;
+    }
+
+    .mydict div {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+        justify-content: center;
+    }
+
+    .mydict input[type="radio"] {
+        clip: rect(0 0 0 0);
+        clip-path: inset(100%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+
+    .mydict input[type="radio"]:checked+span {
+        box-shadow: 0 0 0 0.0625em #0043ed;
+        background-color: #dee7ff;
+        z-index: 1;
+        color: #0043ed;
+    }
+
+    .mydict label span {
+        display: block;
+        cursor: pointer;
+        background-color: #fff;
+        padding: 0.375em .75em;
+        position: relative;
+        margin-left: .0625em;
+        box-shadow: 0 0 0 0.0625em #b5bfd9;
+        letter-spacing: .05em;
+        color: #3e4963;
+        text-align: center;
+        transition: background-color .5s ease;
+    }
+
+    .mydict  label:first-child span {
+        border-radius: .375em 0 0 .375em;
+    }
+
+    .mydict  label:last-child span {
+        border-radius: 0 .375em .375em 0;
+    }
+</style>
 <div class="resutls row">
     <div disabled class="col mb-3">
         <div class="healthcard">
-            <div class="healthimg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#FFD43B" d="M0 192c0-35.3 28.7-64 64-64c.5 0 1.1 0 1.6 0C73 91.5 105.3 64 144 64c15 0 29 4.1 40.9 11.2C198.2 49.6 225.1 32 256 32s57.8 17.6 71.1 43.2C339 68.1 353 64 368 64c38.7 0 71 27.5 78.4 64c.5 0 1.1 0 1.6 0c35.3 0 64 28.7 64 64c0 11.7-3.1 22.6-8.6 32L8.6 224C3.1 214.6 0 203.7 0 192zm0 91.4C0 268.3 12.3 256 27.4 256l457.1 0c15.1 0 27.4 12.3 27.4 27.4c0 70.5-44.4 130.7-106.7 154.1L403.5 452c-2 16-15.6 28-31.8 28l-231.5 0c-16.1 0-29.8-12-31.8-28l-1.8-14.4C44.4 414.1 0 353.9 0 283.4z"/></svg></div>
+            <div class="healthimg"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path fill="#FFD43B"
+                        d="M0 192c0-35.3 28.7-64 64-64c.5 0 1.1 0 1.6 0C73 91.5 105.3 64 144 64c15 0 29 4.1 40.9 11.2C198.2 49.6 225.1 32 256 32s57.8 17.6 71.1 43.2C339 68.1 353 64 368 64c38.7 0 71 27.5 78.4 64c.5 0 1.1 0 1.6 0c35.3 0 64 28.7 64 64c0 11.7-3.1 22.6-8.6 32L8.6 224C3.1 214.6 0 203.7 0 192zm0 91.4C0 268.3 12.3 256 27.4 256l457.1 0c15.1 0 27.4 12.3 27.4 27.4c0 70.5-44.4 130.7-106.7 154.1L403.5 452c-2 16-15.6 28-31.8 28l-231.5 0c-16.1 0-29.8-12-31.8-28l-1.8-14.4C44.4 414.1 0 353.9 0 283.4z" />
+                </svg></div>
             <div class="healthtextBox">
                 <div class="healthtextContent">
                     <p class="health1">Calories intake</p>
 
                 </div>
-                <p class=""  id="calorieResult" ></p>
+                <p class="" id="calorieResult"></p>
                 <div>
                 </div>
             </div>
@@ -41,7 +99,7 @@
                     <p class="health1">Water intake</p>
 
                 </div>
-                <p class=""  id="waterResult"></p>
+                <p class="" id="waterResult"></p>
                 <div>
                 </div>
             </div>
@@ -50,12 +108,11 @@
     </div>
 </div>
 <div class=" mb-4">
-   
- 
+
+
 
     <div></div>
     <form id="healthfrm">
-
         <div class="card-body">
             <div class="mb-3">
                 <label for="calWeight" class="form-label">Weight (kg)</label>
@@ -63,9 +120,29 @@
                     required>
             </div>
             <div class="mb-3">
-                <label for="calHeight" class="form-label">Height (cm)</label>
-                <input type="number" class="form-control" id="calHeight" placeholder="Enter your height" min="1"
-                    required>
+                <label for="calHeight" class="form-label">Height</label>
+                <div class="input-group">
+                    <input step=any type="number" class="form-control" id="calHeight" placeholder="Enter your height" min="1"
+                        required>
+
+                    <div class="mydict">
+                        <div>
+                            <label>
+                                <input type="radio" name="hig" checked="" value="cm">
+                                <span>CM</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="hig" value="feet">
+                                <span>Feet</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="hig" value="meter">
+                                <span>Meters</span>
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="calAge" class="form-label">Age (years)</label>
@@ -79,17 +156,15 @@
                 </select>
             </div>
             <button type="submit" id="calculateCalories" class="btn btn-success">Calculate</button>
-          
         </div>
     </form>
-
 </div>
 <script>
-    
+
     $(document).ready(function () {
         $(".resutls").hide();
-      
     });
+
     $("#healthfrm").submit(function (e) {
         e.preventDefault();
         caloriesi();
@@ -98,62 +173,85 @@
         $(".resutls").fadeIn();
     });
 
+    // Function to get height in cm based on selected unit
+    function getHeightInCM() {
+        const heightValue = parseFloat($("#calHeight").val());
+        const heightUnit = $("input[name='hig']:checked").val();
 
+        if (!heightValue || heightValue <= 0) {
+            alert("Please enter a valid height.");
+            return null;
+        }
+
+        let heightInCM = 0;
+        switch (heightUnit) {
+            case "cm":
+                heightInCM = heightValue;
+                break;
+            case "meter":
+                heightInCM = heightValue * 100; // Convert meters to cm
+                break;
+            case "feet":
+                heightInCM = heightValue * 30.48; // Convert feet to cm
+                break;
+        }
+        return heightInCM;
+    }
 
     function caloriesi() {
-
-        const weight = parseFloat($('#calWeight').val());
-        const height = parseFloat($('#calHeight').val());
-        const age = parseInt($('#calAge').val());
-        const gender = $('#calGender').val();
+        const weight = parseFloat($("#calWeight").val());
+        const height = getHeightInCM();
+        const age = parseInt($("#calAge").val());
+        const gender = $("#calGender").val();
 
         if (weight && height && age) {
             let bmr = 0;
 
-            if (gender === 'male') {
+            if (gender === "male") {
                 bmr = 88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age);
             } else {
                 bmr = 447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age);
             }
 
-            $('#calorieResult').html(`${bmr.toFixed(2)} kcal/day`);
+            $("#calorieResult").html(`${bmr.toFixed(2)} kcal/day`);
         } else {
-            alert('Please enter valid inputs for weight, height, and age.');
+            alert("Please enter valid inputs for weight, height, and age.");
         }
     }
+
     function bmical() {
+        const weight = parseFloat($("#calWeight").val());
+        const heightInCM = getHeightInCM();
 
-        const weight = parseFloat($('#calWeight').val());
-        const height = parseFloat($('#calHeight').val()) / 100;
-
-        if (weight && height) {
-            const bmi = (weight / (height * height)).toFixed(2);
-            let bmiCategory = '';
+        if (weight && heightInCM) {
+            const heightInMeters = heightInCM / 100;
+            const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
+            let bmiCategory = "";
 
             if (bmi < 18.5) {
-                bmiCategory = 'Underweight';
+                bmiCategory = "Underweight";
             } else if (bmi >= 18.5 && bmi < 24.9) {
-                bmiCategory = 'Normal weight';
+                bmiCategory = "Normal weight";
             } else if (bmi >= 25 && bmi < 29.9) {
-                bmiCategory = 'Overweight';
+                bmiCategory = "Overweight";
             } else {
-                bmiCategory = 'Obesity';
+                bmiCategory = "Obesity";
             }
 
-            $('#bmiResult').html(`${bmi} (${bmiCategory})`);
+            $("#bmiResult").html(`${bmi} (${bmiCategory})`);
         } else {
-            alert('Please enter valid weight and height.');
+            alert("Please enter valid weight and height.");
         }
-
     }
 
     function waterIntack() {
-        const weight = parseFloat($('#calWeight').val());
+        const weight = parseFloat($("#calWeight").val());
         if (weight) {
             const waterIntake = (weight * 0.033).toFixed(2); // 33 ml per kg
-            $('#waterResult').html(`${waterIntake} liters/day`);
+            $("#waterResult").html(`${waterIntake} liters/day`);
         } else {
-            alert('Please enter a valid weight.');
+            alert("Please enter a valid weight.");
         }
     }
+
 </script>
