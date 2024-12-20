@@ -24,7 +24,9 @@ $(document).ready(function () {
       }
   
       // Clear previous QR code
-      $('#qrcode').empty();
+      const canvas = document.getElementById('qrcode');
+      const context = canvas.getContext('2d');
+      context.clearRect(0, 0, canvas.width, canvas.height);
   
       // Generate new QR code
       QRCode.toCanvas(document.getElementById('qrcode'), text, {
