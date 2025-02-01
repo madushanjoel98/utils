@@ -3,7 +3,7 @@ var whatsappCHATERPager = "whatsapper";
 var Base64page = "Base64page";
 var MoRSEPAGE = "moRSEPAGE";
 var healthPAge = "healthpage";
-var qrPAge = "QRgen";
+var DNAANLYSIS = "DNAANLYSIS";
 function OnchangeDarkmood() {
   if ($('#night').prop('checked')) {
     localStorage.setItem(darkmode, 1);
@@ -66,7 +66,11 @@ function toogs(id) {
   location.reload();
 
 }
-
+function loadDanAnylisis() {
+  $("#connts").toggle();
+  $("#main").load("dnaanalysis.html");
+  location.hash = DNAANLYSIS;
+}
 function urlHashChecker() {
   var loc = location.hash; // This gets the hash including the '#' symbol
   console.log("Current Hash: ", loc);
@@ -93,6 +97,10 @@ function urlHashChecker() {
       loadQRgen();
       break;
 
+      case "#"+DNAANLYSIS:
+        loadDanAnylisis();
+        break;
+  
     default:
       console.log("No matching case for:", loc);
  

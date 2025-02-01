@@ -1,0 +1,113 @@
+
+<style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .strand {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .rung {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            margin: 5px 10px;
+            padding: 5px;
+        }
+        .rung span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+
+
+<div class="container">
+    <h1 class="text-center mb-4"><i class="fa fa-arrow-left" style=" cursor: pointer;" aria-hidden="true" onclick="toogs('whatsch')"></i> DNA Sequence Analyzer</h1>
+    
+    <!-- DNA Input Form -->
+    <form id="dnaForm">
+        <div class="mb-3">
+            <label for="dnaSequence" class="form-label">Enter DNA Sequence:</label>
+            <input type="text" class="form-control" id="dnaSequence" placeholder="Enter DNA sequence (A, C, G, T)">
+        </div>
+        <button type="submit" class="btn btn-primary">Analyze Sequence</button>
+    </form>
+
+    <hr>
+
+    <!-- Results Display -->
+    <div id="results" class="mt-4">
+        <div id="dnaContainer" class="mt-4 bg-dark"></div>
+        <h4>Results:</h4>
+        <div class="mb-3">
+            <strong>Validation:</strong>
+            <p id="validationResult"></p>
+        </div>
+        <div class="mb-3">
+            <strong>Nucleotide Count:</strong>
+            <p id="nucleotideCount"></p>
+        </div>
+        <div class="mb-3">
+            <strong>Transcribed RNA:</strong>
+            <p id="rnaSequence"></p>
+        </div>
+        <div class="mb-3">
+            <strong>Protein Sequence:</strong>
+            <p id="proteinSequence"></p>
+        </div>
+        <div class="mb-3">
+            <strong>Reverse Complement:</strong>
+            <p id="reverseComplement"></p>
+        </div>
+    </div>
+
+    <!-- DNA Display -->
+    <div id="dnaContainer" class="mt-4 bg-dark"></div>
+
+<hr>
+    <small class="text-center">
+        This tool allows you to analyze and visualize DNA sequences. 
+        You can enter a DNA sequence to validate it, count nucleotides, 
+        transcribe it into RNA, translate it into a protein sequence, 
+        and generate its reverse complement. Additionally, a visual 
+        representation of the DNA double helix is displayed.
+    </small>
+</div>
+
+<!-- Bootstrap JS & Dependencies -->
+
+<script>
+// Event listener for form submission
+document.getElementById("dnaForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const dnaSequence = document.getElementById("dnaSequence").value.trim();
+
+    // Validate the DNA sequence
+    const validatedSequence = validateSequence(dnaSequence);
+    if (validatedSequence) {
+        // Display results
+        document.getElementById("validationResult").innerHTML = `Valid DNA: ${validatedSequence}`;
+        document.getElementById("nucleotideCount").innerHTML = JSON.stringify(countNucleotides(validatedSequence), null, 2);
+        
+        const rnaSequence = transcribeDNA(validatedSequence);
+        document.getElementById("rnaSequence").innerHTML = rnaSequence;
+        
+        const proteinSequence = translateRNAtoProtein(rnaSequence);
+        document.getElementById("proteinSequence").innerHTML = proteinSequence;
+        
+        const reverseComp = reverseComplement(validatedSequence);
+        document.getElementById("reverseComplement").innerHTML = reverseComp;
+
+        // Draw the DNA sequence
+        drawDNA(validatedSequence);
+    } else {
+        // Handle invalid DNA sequence
+        document.getElementById("validationResult").innerHTML = "Invalid DNA Sequence!";
+    }
+});
+</script>
