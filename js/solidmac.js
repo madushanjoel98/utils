@@ -71,6 +71,10 @@ function loadDanAnylisis() {
   $("#main").load("dnaanalysis.html");
   location.hash = DNAANLYSIS;
 }
+function trcBramuda() { 
+  location.replace("https://alphasl.pythonanywhere.com/");
+ }
+
 function urlHashChecker() {
   var loc = location.hash; // This gets the hash including the '#' symbol
   console.log("Current Hash: ", loc);
