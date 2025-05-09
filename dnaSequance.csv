@@ -1,0 +1,141 @@
+ID,Sequence,Description,Organism,Location,Strand,Length,GC_Content,Gene_ID,Protein_Name,Function,Expression_Level,Tissue,Disease_Association
+61,AGCTTGCTAG,Histone H1,Homo sapiens,Chromosome 6,+,10,0.50,H1-0,H1-0,Chromatin structure,High,All tissues,NA
+62,CTAGCTAGCT,Insulin receptor,Homo sapiens,Chromosome 19,+,10,0.50,INSR,INSR,Signal transduction,Medium,Pancreas,Diabetes
+63,GTCAGTACTG,Tumor necrosis factor,Homo sapiens,Chromosome 6,-,10,0.50,TNF,TNF,Immune response,High,Immune cells,Inflammation
+64,TACGTAGCCT,Interleukin-6,Homo sapiens,Chromosome 7,+,10,0.50,IL6,IL6,Immune response,High,Immune cells,Inflammation
+65,CCCGGGTTTT,Ribosomal RNA,Mus musculus,Multiple chromosomes,+,10,0.60,Rn45s,rRNA,Protein synthesis,High,All tissues,NA
+66,AAGGTTCCAA,Transfer RNA,Mus musculus,Multiple chromosomes,+,10,0.30,Trnat-ugu,tRNA,Protein synthesis,High,All tissues,NA
+67,GGCGCAATGC,Enhancer sequence,Mus musculus,Chromosome 11,+,10,0.60,NA,NA,Gene regulation,Variable,Depends on gene,NA
+68,TTTTTTTTTT,Poly-A signal,Mus musculus,mRNA,+,10,0.00,NA,NA,mRNA processing,High,All tissues,NA
+69,ATGCGCATGC,MicroRNA precursor,Mus musculus,Chromosome 2,-,10,0.50,Mir21,miRNA,Gene regulation,Variable,Depends on miRNA,NA
+70,CGTACGTACG,Long non-coding RNA,Mus musculus,Chromosome X,-,10,0.50,Lncx1,lncRNA,Gene regulation,Variable,Depends on lncRNA,NA
+71,ATGCCTAGGA,Hemoglobin subunit alpha,Pan troglodytes,Chromosome 16,+,10,0.50,ENSPTRG00000012345,HBA,Oxygen transport,High,Blood,NA
+72,GCTAGCTATT,Myoglobin,Pan troglodytes,Chromosome 2,+,10,0.40,ENSPTRG00000023456,MB,Oxygen storage,High,Muscle,NA
+73,TTACGCATTA,Intergenic region 2,Rattus norvegicus,Chromosome 1,-,10,0.40,NA,NA,NA,NA,NA,NA
+74,CGATCGATCG,Insulin,Pan troglodytes,Chromosome 11,+,10,0.50,ENSPTRG00000034567,INS,Glucose metabolism,Medium,Pancreas,NA
+75,AATTGGCCAA,Control sequence,Synthetic,Plasmid,+,10,0.20,NA,NA,NA,NA,NA,NA
+76,GATTACAGCA,Viral envelope protein,Simian immunodeficiency virus,Genome,+,10,0.40,env,Envelope protein,Viral entry,High,Lymph node,AIDS
+77,CGCGCGCGCA,Telomere repeat,Pan troglodytes,Chromosome ends,+,10,1.00,NA,NA,Telomere maintenance,Medium,Stem cells,NA
+78,ATGCGCTAGC,Cytochrome c oxidase subunit 1,Pan troglodytes,Mitochondria,+,10,0.50,MT-CO1,CO1,Respiration,High,Muscle,NA
+79,TAGCTAGCTA,Plasmid pBR322,Escherichia coli,Plasmid,+,10,0.30,bla,Beta-lactamase,Antibiotic resistance,High,Bacteria,NA
+80,GCATGCATGC,Transposon Tn5,Escherichia coli,Chromosome,+,10,0.50,tnpA,Transposase,DNA transposition,Low,Bacteria,NA
+81,AGCTTAGCTT,Keratin,Pan troglodytes,Chromosome 12,+,10,0.40,ENSPTRG00000045678,KRT1,Structural protein,High,Skin,NA
+82,CTAGCTAGCC,Collagen,Pan troglodytes,Chromosome 7,+,10,0.50,ENSPTRG00000056789,COL1A1,Structural protein,High,Connective tissue,NA
+83,GTCAGTACTT,Growth hormone,Pan troglodytes,Chromosome 17,+,10,0.40,ENSPTRG00000067890,GH1,Growth regulation,Medium,Pituitary gland,NA
+84,TACGTAGCCT,Hemoglobin subunit beta,Pan troglodytes,Chromosome 11,+,10,0.50,ENSPTRG00000078901,HBB,Oxygen transport,High,Blood,NA
+85,CCCGGGTT,rRNA gene,Pan troglodytes,Multiple chromosomes,+,8,0.63,RNR1,rRNA,Protein synthesis,High,All tissues,NA
+86,AAGGTTCC,tRNA gene,Pan troglodytes,Multiple chromosomes,+,8,0.38,TRNA1,tRNA,Protein synthesis,High,All tissues,NA
+87,GGCGCAAT,Promoter region,Pan troglodytes,Chromosome 1,+,8,0.63,NA,NA,Gene regulation,Variable,Depends on gene,NA
+88,TTTTTTTT,Poly-A tail,Pan troglodytes,mRNA,+,8,0.00,NA,NA,mRNA processing,High,All tissues,NA
+89,ATGCGCAT,MicroRNA,Pan troglodytes,Chromosome 21,+,8,0.50,MIR1,miRNA,Gene regulation,Variable,Depends on miRNA,NA
+90,CGTACGTA,Long non-coding RNA,Pan troglodytes,Chromosome 3,-,8,0.50,LNC1,lncRNA,Gene regulation,Variable,Depends on lncRNA,NA
+91,ATGCCTAGG,Hemoglobin subunit alpha,Gorilla gorilla,Chromosome 16,+,9,0.56,ENSGGOG00000012345,HBA,Oxygen transport,High,Blood,NA
+92,GCTAGCTAT,Myoglobin,Gorilla gorilla,Chromosome 2,+,9,0.44,ENSGGOG00000023456,MB,Oxygen storage,High,Muscle,NA
+93,TTACGCATT,Intergenic region 3,Danio rerio,Chromosome 5,-,9,0.44,NA,NA,NA,NA,NA,NA
+94,CGATCGATT,Insulin,Gorilla gorilla,Chromosome 11,+,9,0.56,ENSGGOG00000034567,INS,Glucose metabolism,Medium,Pancreas,NA
+95,AATTGGCCA,Control sequence,Synthetic,Plasmid,+,9,0.22,NA,NA,NA,NA,NA,NA
+96,GATTACAGC,Viral capsid protein,Simian immunodeficiency virus,Genome,+,9,0.44,gag,Capsid protein,Viral structure,High,Lymph node,AIDS
+97,CGCGCGCGC,Telomere repeat,Gorilla gorilla,Chromosome ends,+,9,1.00,NA,NA,Telomere maintenance,Medium,Stem cells,NA
+98,ATGCGCTAG,Cytochrome c oxidase subunit 1,Gorilla gorilla,Mitochondria,+,9,0.56,MT-CO1,CO1,Respiration,High,Muscle,NA
+99,TAGCTAGCT,Plasmid pBR322,Escherichia coli,Plasmid,+,9,0.33,bla,Beta-lactamase,Antibiotic resistance,High,Bacteria,NA
+100,GCATGCATG,Transposon Tn5,Escherichia coli,Chromosome,+,9,0.56,tnpA,Transposase,DNA transposition,Low,Bacteria,NA
+121,AGCTTAGCTC,CNTF,Homo sapiens,Chromosome 11,+,10,0.40,CNTF,CNTF,Neurotrophic factor,Low,Nervous system,NA
+122,CTAGCTAGCG,GDNF,Homo sapiens,Chromosome 5,+,10,0.50,GDNF,GDNF,Neurotrophic factor,Medium,Nervous system,Parkinson's disease
+123,GTCAGTACTC,NT-3,Homo sapiens,Chromosome 12,+,10,0.40,NTF3,NT-3,Neurotrophic factor,Medium,Nervous system,NA
+124,TACGTAGCCG,NT-4,Homo sapiens,Chromosome 19,+,10,0.50,NTF4,NT-4,Neurotrophic factor,Low,Nervous system,NA
+125,CCCGGGTTT,rRNA gene,Mus musculus,Multiple chromosomes,+,9,0.67,Rn45s,rRNA,Protein synthesis,High,All tissues,NA
+126,AAGGTTCCA,tRNA gene,Mus musculus,Multiple chromosomes,+,9,0.33,Trnat-ugu,tRNA,Protein synthesis,High,All tissues,NA
+127,GGCGCAATG,Promoter region,Mus musculus,Chromosome 11,+,9,0.67,NA,NA,Gene regulation,Variable,Depends on gene,NA
+128,TTTTTTTTT,Poly-A signal,Mus musculus,mRNA,+,9,0.00,NA,NA,mRNA processing,High,All tissues,NA
+129,ATGCGCATG,MicroRNA precursor,Mus musculus,Chromosome 2,-,9,0.56,Mir21,miRNA,Gene regulation,Variable,Depends on miRNA,NA
+130,CGTACGTAC,Long non-coding RNA,Mus musculus,Chromosome X,-,9,0.56,Lncx1,lncRNA,Gene regulation,Variable,Depends on lncRNA,NA
+131,ATGCCTAGG,Hemoglobin subunit alpha,Pan troglodytes,Chromosome 16,+,9,0.56,ENSPTRG00000012345,HBA,Oxygen transport,High,Blood,NA
+132,GCTAGCTAT,Myoglobin,Pan troglodytes,Chromosome 2,+,9,0.44,ENSPTRG00000023456,MB,Oxygen storage,High,Muscle,NA
+133,TTACGCATT,Intergenic region 4,Danio rerio,Chromosome 1,-,9,0.44,NA,NA,NA,NA,NA,NA
+134,CGATCGATT,Insulin,Pan troglodytes,Chromosome 11,+,9,0.56,ENSPTRG00000034567,INS,Glucose metabolism,Medium,Pancreas,NA
+135,AATTGGCCA,Control sequence,Synthetic,Plasmid,+,9,0.22,NA,NA,NA,NA,NA,NA
+136,GATTACAGC,Viral reverse transcriptase,Simian immunodeficiency virus,Genome,+,9,0.44,pol,Reverse transcriptase,Viral replication,High,Lymph node,AIDS
+137,CGCGCGCGC,Telomere repeat,Pan troglodytes,Chromosome ends,+,9,1.00,NA,NA,Telomere maintenance,Medium,Stem cells,NA
+138,ATGCGCTAG,Cytochrome c oxidase subunit 1,Pan troglodytes,Mitochondria,+,9,0.56,MT-CO1,CO1,Respiration,High,Muscle,NA
+139,TAGCTAGCT,Plasmid pBR322,Escherichia coli,Plasmid,+,9,0.33,bla,Beta-lactamase,Antibiotic resistance,High,Bacteria,NA
+140,GCATGCATG,Transposon Tn5,Escherichia coli,Chromosome,+,9,0.56,tnpA,Transposase,DNA transposition,Low,Bacteria,NA
+141,AGCTTAGCT,Keratin,Pan troglodytes,Chromosome 12,+,9,0.56,ENSPTRG00000045678,KRT1,Structural protein,High,Skin,NA
+142,CTAGCTAGC,Collagen,Pan troglodytes,Chromosome 7,+,9,0.56,ENSPTRG00000056789,COL1A1,Structural protein,High,Connective tissue,NA
+143,GTCAGTACT,Growth hormone,Pan troglodytes,Chromosome 17,+,9,0.56,ENSPTRG00000067890,GH1,Growth regulation,Medium,Pituitary gland,NA
+144,TACGTAGCC,Hemoglobin subunit beta,Pan troglodytes,Chromosome 11,+,9,0.56,ENSPTRG00000078901,HBB,Oxygen transport,High,Blood,NA
+145,CCCGGGTT,rRNA gene,Pan troglodytes,Multiple chromosomes,+,8,0.63,RNR1,rRNA,Protein synthesis,High,All tissues,NA
+146,AAGGTTCC,tRNA gene,Pan troglodytes,Multiple chromosomes,+,8,0.38,TRNA1,tRNA,Protein synthesis,High,All tissues,NA
+147,GGCGCAAT,Promoter region,Pan troglodytes,Chromosome 1,+,8,0.63,NA,NA,Gene regulation,Variable,Depends on gene,NA
+148,TTTTTTTT,Poly-A tail,Pan troglodytes,mRNA,+,8,0.00,NA,NA,mRNA processing,High,All tissues,NA
+149,ATGCGCAT,MicroRNA,Pan troglodytes,Chromosome 21,+,8,0.50,MIR1,miRNA,Gene regulation,Variable,Depends on miRNA,NA
+150,CGTACGTA,Long non-coding RNA,Pan troglodytes,Chromosome 3,-,8,0.50,LNC1,lncRNA,Gene regulation,Variable,Depends on lncRNA,NA
+151,ATGCCTAGG,Hemoglobin subunit alpha,Gorilla gorilla,Chromosome 16,+,9,0.56,ENSGGOG00000012345,HBA,Oxygen transport,High,Blood,NA
+152,GCTAGCTAT,Myoglobin,Gorilla gorilla,Chromosome 2,+,9,0.44,ENSGGOG00000023456,MB,Oxygen storage,High,Muscle,NA
+153,TTACGCATT,Intergenic region 5,Danio rerio,Chromosome 10,-,9,0.44,NA,NA,NA,NA,NA,NA
+154,CGATCGATT,Insulin,Gorilla gorilla,Chromosome 11,+,9,0.56,ENSGGOG00000034567,INS,Glucose metabolism,Medium,Pancreas,NA
+155,AATTGGCCA,Control sequence,Synthetic,Plasmid,+,9,0.22,NA,NA,NA,NA,NA,NA
+156,GATTACAGC,Viral integrase,Simian immunodeficiency virus,Genome,+,9,0.44,int,Integrase,Viral integration,High,Lymph node,AIDS
+157,CGCGCGCGC,Telomere repeat,Gorilla gorilla,Chromosome ends,+,9,1.00,NA,NA,Telomere maintenance,Medium,Stem cells,NA
+158,ATGCGCTAG,Cytochrome c oxidase subunit 1,Gorilla gorilla,Mitochondria,+,9,0.56,MT-CO1,CO1,Respiration,High,Muscle,NA
+159,TAGCTAGCT,Plasmid pBR322,Escherichia coli,Plasmid,+,9,0.33,bla,Beta-lactamase,Antibiotic resistance,High,Bacteria,NA
+160,GCATGCATG,Transposon Tn5,Escherichia coli,Chromosome,+,9,0.56,tnpA,Transposase,DNA transposition,Low,Bacteria,NA
+161,AGCTTAGCT,Keratin,Gorilla gorilla,Chromosome 12,+,9,0.56,ENSGGOG00000045678,KRT1,Structural protein,High,Skin,NA
+162,CTAGCTAGC,Collagen,Gorilla gorilla,Chromosome 7,+,9,0.56,ENSGGOG00000056789,COL1A1,Structural protein,High,Connective tissue,NA
+163,GTCAGTACT,Growth hormone,Gorilla gorilla,Chromosome 17,+,9,0.56,ENSGGOG00000067890,GH1,Growth regulation,Medium,Pituitary gland,NA
+164,TACGTAGCC,Hemoglobin subunit beta,Gorilla gorilla,Chromosome 11,+,9,0.56,ENSGGOG00000078901,HBB,Oxygen transport,High,Blood,NA
+165,CCCGGGTT,rRNA gene,Gorilla gorilla,Multiple chromosomes,+,8,0.63,RNR1,rRNA,Protein synthesis,High,All tissues,NA
+166,AAGGTTCC,tRNA gene,Gorilla gorilla,Multiple chromosomes,+,8,0.38,TRNA1,tRNA,Protein synthesis,High,All tissues,NA
+167,GGCGCAAT,Promoter region,Gorilla gorilla,Chromosome 1,+,8,0.63,NA,NA,Gene regulation,Variable,Depends on gene,NA
+168,TTTTTTTT,Poly-A tail,Gorilla gorilla,mRNA,+,8,0.00,NA,NA,mRNA processing,High,All tissues,NA
+169,ATGCGCAT,MicroRNA,Gorilla gorilla,Chromosome 21,+,8,0.50,MIR1,miRNA,Gene regulation,Variable,Depends on miRNA,NA
+170,CGTACGTA,Long non-coding RNA,Gorilla gorilla,Chromosome 3,-,8,0.50,LNC1,lncRNA,Gene regulation,Variable,Depends on lncRNA,NA
+171,ATGCCTAGG,Cytochrome b,Homo sapiens,Mitochondria,+,9,0.56,MT-CYB,CYB,Respiration,High,Muscle,NA
+172,GCTAGCTAT,NADH dehydrogenase subunit 1,Homo sapiens,Mitochondria,+,9,0.44,MT-ND1,ND1,Respiration,High,Muscle,NA
+173,TTACGCATT,Intergenic region 6,Mus musculus,Chromosome 8,-,9,0.44,NA,NA,NA,NA,NA,NA
+174,CGATCGATT,ATP synthase subunit 6,Homo sapiens,Mitochondria,+,9,0.56,MT-ATP6,ATP6,ATP synthesis,High,Muscle,NA
+175,AATTGGCCA,Control sequence,Synthetic,Plasmid,+,9,0.22,NA,NA,NA,NA,NA,NA
+176,GATTACAGC,tRNA-Leu,Homo sapiens,Mitochondria,+,9,0.44,MT-TL1,tRNA-Leu,Protein synthesis,High,Muscle,NA
+177,CGCGCGCGC,D-loop,Homo sapiens,Mitochondria,+,9,1.00,NA,NA,Mitochondrial replication,Medium,Muscle,NA
+178,ATGCGCTAG,12S rRNA,Homo sapiens,Mitochondria,+,9,0.56,MT-RNR1,12S rRNA,Protein synthesis,High,Muscle,NA
+179,TAGCTAGCT,16S rRNA,Homo sapiens,Mitochondria,+,9,0.33,MT-RNR2,16S rRNA,Protein synthesis,High,Muscle,NA
+180,GCATGCATG,Transfer RNA-Phe,Homo sapiens,Mitochondria,+,9,0.56,MT-TF,tRNA-Phe,Protein synthesis,High,Muscle,NA
+181,AGCTTAGCT,Transfer RNA-Val,Homo sapiens,Mitochondria,+,9,0.56,MT-TV,tRNA-Val,Protein synthesis,High,Muscle,NA
+182,CTAGCTAGC,Transfer RNA-Leu,Homo sapiens,Mitochondria,-,9,0.56,MT-TL2,tRNA-Leu,Protein synthesis,High,Muscle,NA
+183,GTCAGTACT,Transfer RNA-Ile,Homo sapiens,Mitochondria,+,9,0.56,MT-TI,tRNA-Ile,Protein synthesis,High,Muscle,NA
+184,TACGTAGCC,Transfer RNA-Gln,Homo sapiens,Mitochondria,+,9,0.56,MT-TQ,tRNA-Gln,Protein synthesis,High,Muscle,NA
+185,CCCGGGTT,Transfer RNA-Met,Homo sapiens,Mitochondria,+,8,0.63,MT-TM,tRNA-Met,Protein synthesis,High,Muscle,NA
+186,AAGGTTCC,Transfer RNA-Trp,Homo sapiens,Mitochondria,+,8,0.38,MT-TW,tRNA-Trp,Protein synthesis,High,Muscle,NA
+187,GGCGCAAT,Transfer RNA-Ala,Homo sapiens,Mitochondria,+,8,0.63,MT-TA,tRNA-Ala,Protein synthesis,High,Muscle,NA
+188,TTTTTTTT,Transfer RNA-Asn,Homo sapiens,Mitochondria,+,8,0.00,MT-TN,tRNA-Asn,Protein synthesis,High,Muscle,NA
+189,ATGCGCAT,Transfer RNA-Cys,Homo sapiens,Mitochondria,+,8,0.50,MT-TC,tRNA-Cys,Protein synthesis,High,Muscle,NA
+190,CGTACGTA,Transfer RNA-Tyr,Homo sapiens,Mitochondria,-,8,0.50,MT-TY,tRNA-Tyr,Protein synthesis,High,Muscle,NA
+191,ATGCCTAGG,Transfer RNA-Ser,Homo sapiens,Mitochondria,+,9,0.56,MT-TS1,tRNA-Ser,Protein synthesis,High,Muscle,NA
+192,GCTAGCTAT,Transfer RNA-Asp,Homo sapiens,Mitochondria,+,9,0.44,MT-TD,tRNA-Asp,Protein synthesis,High,Muscle,NA
+193,TTACGCATT,Transfer RNA-Lys,Homo sapiens,Mitochondria,-,9,0.44,MT-TK,tRNA-Lys,Protein synthesis,High,Muscle,NA
+194,CGATCGATT,Transfer RNA-Gly,Homo sapiens,Mitochondria,+,9,0.56,MT-TG,tRNA-Gly,Protein synthesis,High,Muscle,NA
+195,AATTGGCCA,Control sequence,Synthetic,Plasmid,+,9,0.22,NA,NA,NA,NA,NA,NA
+196,GATTACAGC,Non-coding RNA,Homo sapiens,Chromosome 1,+,9,0.44,NCRNA1,ncRNA,Unknown,Low,Brain,NA
+197,CGCGCGCGC,Pseudogene,Homo sapiens,Chromosome 7,+,9,1.00,PSEUDO1,NA,NA,NA,NA,NA
+198,ATGCGCTAG,Retrotransposon,Homo sapiens,Chromosome 11,+,9,0.56,LINE1,NA,NA,NA,NA,NA
+199,TAGCTAGCT,Satellite DNA,Homo sapiens,Chromosome 17,+,9,0.33,NA,NA,NA,NA,NA,NA
+200,GCATGCATG,Microsatellite,Homo sapiens,Chromosome X,+,9,0.56,NA,NA,NA,NA,NA,NA
+201,AGCTTAGCT,Telomere repeat,Mus musculus,Chromosome ends,+,9,0.56,NA,NA,Telomere maintenance,Medium,Stem cells,NA
+202,CTAGCTAGC,Alu element,Homo sapiens,Multiple chromosomes,+,9,0.56,NA,NA,NA,NA,NA,NA
+203,GTCAGTACT,LINE-1 element,Homo sapiens,Multiple chromosomes,+,9,0.56,NA,NA,NA,NA,NA,NA
+204,TACGTAGCC,ERV element,Homo sapiens,Multiple chromosomes,+,9,0.56,NA,NA,NA,NA,NA,NA
+205,CCCGGGTT,Satellite DNA,Mus musculus,Centromeres,+,8,0.63,NA,NA,NA,NA,NA,NA
+206,AAGGTTCC,Microsatellite,Mus musculus,Chromosome 7,+,8,0.38,NA,NA,NA,NA,NA,NA
+207,GGCGCAAT,Non-coding RNA,Mus musculus,Chromosome 1,-,8,0.63,NCRNA2,ncRNA,Unknown,Medium,Liver,NA
+208,TTTTTTTT,Pseudogene,Mus musculus,Chromosome 4,+,8,0.00,PSEUDO2,NA,NA,NA,NA,NA
+209,ATGCGCAT,Retrotransposon,Mus musculus,Chromosome X,+,8,0.50,LINE2,NA,NA,NA,NA,NA
+210,CGTACGTA,Long terminal repeat,Mus musculus,Chromosome 2,-,8,0.50,LTR1,NA,NA,NA,NA,NA
+211,ATGCCTAGG,Hemoglobin subunit alpha,Rattus norvegicus,Chromosome 1,+,9,0.56,ENSRNOG00000012345,HBA,Oxygen transport,High,Blood,NA
+212,GCTAGCTAT,Myoglobin,Rattus norvegicus,Chromosome 3,+,9,0.44,ENSRNOG00000023456,MB,Oxygen storage,High,Muscle,NA
+213,TTACGCATT,Intergenic region 7,Danio rerio,Chromosome 3,-,9,0.44,NA,NA,NA,NA,NA,NA
+214,CGATCGATT,Insulin,Rattus norvegicus,Chromosome 19,+,9,0.56,ENSRNOG00000034567,INS,Glucose metabolism,Medium,Pancreas,NA
+215,AATTGGCCA,Control sequence,Synthetic,Plasmid,+,9,0.22,NA,NA,NA,NA,NA,NA
+216,GATTACAGC,Viral protein,Murine leukemia virus,Genome,+,9,0.44,NA,Viral protein,Viral replication,High,Spleen,Leukemia
+217,CGCGCGCGC,Telomere repeat,Rattus norvegicus,Chromosome ends,+,9,1.00,NA,NA,Telomere maintenance,Medium,Stem cells,NA
+218,ATGCGCTAG,Cytochrome c oxidase subunit 1,Rattus norvegicus,Mitochondria,+,9,0.56,MT-CO1,CO1,Respiration,High,Muscle,NA
+219,TAGCTAGCT,Plasmid pBR322,Escherichia coli,Plasmid,+,9,0.33,bla,Beta-lactamase,Antibiotic resistance,High,Bacteria,NA
+220,GCATGCATG,Transposon Tn5,Escherichia coli,Chromosome,+,9,0.56,tnpA,Transposase,DNA transposition,Low,Bacteria,NA
