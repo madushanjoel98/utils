@@ -4,6 +4,7 @@ var Base64page = "Base64page";
 var MoRSEPAGE = "moRSEPAGE";
 var healthPAge = "healthpage";
 var DNAANLYSIS = "DNAANLYSIS";
+var qrPAge = "qrPAge";
 function OnchangeDarkmood() {
   if ($('#night').prop('checked')) {
     localStorage.setItem(darkmode, 1);
@@ -97,7 +98,7 @@ function urlHashChecker() {
       loadHealth();
       break;
 
-    case "#qrPAge":
+    case "#"+qrPAge:
       loadQRgen();
       break;
 
