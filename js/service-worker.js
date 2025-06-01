@@ -1,4 +1,4 @@
-const CACHE_NAME = "toolspark-cache-v1";
+const CACHE_NAME = "toolspark-cache-v2";
 const urlsToCache = [
   "/",
   "/index.html",
@@ -8,7 +8,17 @@ const urlsToCache = [
   "/js/solidmac.js",
   "/js/qrscript.js",
   "/js/dnatool.js",
-  "/img/settings.png"
+  "/img/settings.png",
+  "/homepage.html",
+  "/content.html",
+  "/js/pdff.js",
+  "/js/cordial.js",
+  "/img/baramuda.png",
+  "/img/glass-of-water.png",
+  "/img/microscope_947539.png",
+  "/img/qr.png",
+  "/img/scale.png",
+  "/img/weightmanagement.png"
 ];
 
 self.addEventListener("install", event => {
