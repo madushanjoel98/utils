@@ -1,34 +1,79 @@
-
 <style>
-        body {
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-        }
-        .strand {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    body {
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 800px;
+    }
+
+    #dnaContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 10px;
+    }
+
+    .rung {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+       
+        padding: 4px 8px;
+        border-radius: 6px;
+
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .base {
+        font-weight: bold;
+        font-family: monospace;
+        font-size: 1.2rem;
+    }
+
+    /* Nucleotide color classes */
+    .base.A {
+        color: #FF0000;
+    }
+
+    /* Adenine */
+    .base.T {
+        color: #0000FF;
+    }
+
+    /* Thymine */
+    .base.C {
+        color: #00AA00;
+    }
+
+    /* Cytosine */
+    .base.G {
+        color: #FFA500;
+    }
+
+    /* Guanine */
+
+    /* Mobile responsiveness */
+    @media screen and (max-width: 600px) {
         .rung {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            margin: 5px 10px;
-            padding: 5px;
+            gap: 12px;
+            padding: 6px;
         }
-        .rung span {
-            font-size: 20px;
-            font-weight: bold;
+
+        .base {
+            font-size: 1rem;
         }
-    </style>
+    }
+</style>
 
 
 <div class="container">
-    <h1 class="text-center mb-4"><i class="fa fa-arrow-left" style=" cursor: pointer;" aria-hidden="true" onclick="toogs('whatsch')"></i> DNA Sequence Analyzer</h1>
-    
+    <h1 class="text-center mb-4"><i class="fa fa-arrow-left" style=" cursor: pointer;" aria-hidden="true"
+            onclick="toogs('whatsch')"></i> DNA Sequence Analyzer</h1>
+
     <!-- DNA Input Form -->
     <form id="dnaForm">
         <div class="mb-3">
@@ -39,11 +84,11 @@
     </form>
 
     <hr>
-<div id="dnaContainer" class="mt-4 bg-dark d-flex flex-wrap justify-content-center p-3 rounded"></div>
+    <div id="dnaContainer" class="mt-4 bg-dark d-flex flex-wrap justify-content-center p-3 rounded"></div>
 
     <!-- Results Display -->
     <div id="results" class="mt-4">
-       
+
         <h4>Results:</h4>
         <div class="mb-3">
             <strong>Validation:</strong>
@@ -70,12 +115,12 @@
     <!-- DNA Display -->
 
 
-<hr>
+    <hr>
     <small class="text-center">
-        This tool allows you to analyze and visualize DNA sequences. 
-        You can enter a DNA sequence to validate it, count nucleotides, 
-        transcribe it into RNA, translate it into a protein sequence, 
-        and generate its reverse complement. Additionally, a visual 
+        This tool allows you to analyze and visualize DNA sequences.
+        You can enter a DNA sequence to validate it, count nucleotides,
+        transcribe it into RNA, translate it into a protein sequence,
+        and generate its reverse complement. Additionally, a visual
         representation of the DNA double helix is displayed.
     </small>
 </div>
@@ -83,32 +128,32 @@
 <!-- Bootstrap JS & Dependencies -->
 
 <script>
-// Event listener for form submission
-document.getElementById("dnaForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const dnaSequence = document.getElementById("dnaSequence").value.trim();
+    // Event listener for form submission
+    document.getElementById("dnaForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const dnaSequence = document.getElementById("dnaSequence").value.trim();
 
-    // Validate the DNA sequence
-    const validatedSequence = validateSequence(dnaSequence);
-    if (validatedSequence) {
-        // Display results
-        document.getElementById("validationResult").innerHTML = `Valid DNA: ${validatedSequence}`;
-        document.getElementById("nucleotideCount").innerHTML = JSON.stringify(countNucleotides(validatedSequence), null, 2);
-        
-        const rnaSequence = transcribeDNA(validatedSequence);
-        document.getElementById("rnaSequence").innerHTML = rnaSequence;
-        
-        const proteinSequence = translateRNAtoProtein(rnaSequence);
-        document.getElementById("proteinSequence").innerHTML = proteinSequence;
-        
-        const reverseComp = reverseComplement(validatedSequence);
-        document.getElementById("reverseComplement").innerHTML = reverseComp;
+        // Validate the DNA sequence
+        const validatedSequence = validateSequence(dnaSequence);
+        if (validatedSequence) {
+            // Display results
+            document.getElementById("validationResult").innerHTML = `Valid DNA: ${validatedSequence}`;
+            document.getElementById("nucleotideCount").innerHTML = JSON.stringify(countNucleotides(validatedSequence), null, 2);
 
-        // Draw the DNA sequence
-        drawDNA(validatedSequence);
-    } else {
-        // Handle invalid DNA sequence
-        document.getElementById("validationResult").innerHTML = "Invalid DNA Sequence!";
-    }
-});
+            const rnaSequence = transcribeDNA(validatedSequence);
+            document.getElementById("rnaSequence").innerHTML = rnaSequence;
+
+            const proteinSequence = translateRNAtoProtein(rnaSequence);
+            document.getElementById("proteinSequence").innerHTML = proteinSequence;
+
+            const reverseComp = reverseComplement(validatedSequence);
+            document.getElementById("reverseComplement").innerHTML = reverseComp;
+
+            // Draw the DNA sequence
+            drawDNA(validatedSequence);
+        } else {
+            // Handle invalid DNA sequence
+            document.getElementById("validationResult").innerHTML = "Invalid DNA Sequence!";
+        }
+    });
 </script>

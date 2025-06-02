@@ -5,6 +5,7 @@ var MoRSEPAGE = "moRSEPAGE";
 var healthPAge = "healthpage";
 var DNAANLYSIS = "DNAANLYSIS";
 var qrPAge = "qrPAge";
+var audioTuner = "audioTuner";
 function OnchangeDarkmood() {
   if ($('#night').prop('checked')) {
     localStorage.setItem(darkmode, 1);
@@ -62,6 +63,12 @@ function loadQRgen() {
   $("#main").load("qr.html");
   location.hash = qrPAge;
 }
+tunerview = function () {
+  $("#connts").toggle();
+  $("#main").load("tuner.html");
+  location.hash = audioTuner;
+}
+
 function toogs(id) {
   window.location.hash = '';
   location.reload();
@@ -72,43 +79,45 @@ function loadDanAnylisis() {
   $("#main").load("dnaanalysis.html");
   location.hash = DNAANLYSIS;
 }
-function trcBramuda() { 
+function trcBramuda() {
   location.replace("https://alphasl.pythonanywhere.com/");
- }
+}
 
 function urlHashChecker() {
   var loc = location.hash; // This gets the hash including the '#' symbol
   console.log("Current Hash: ", loc);
 
   switch (loc) {
-    case "#"+Base64page:
+    case "#" + Base64page:
       loadCommponetencription();
       break;
 
-    case "#"+whatsappCHATERPager:
-     
+    case "#" + whatsappCHATERPager:
+
       loadWhatsAppChatter();
       break;
 
-    case "#"+MoRSEPAGE:
+    case "#" + MoRSEPAGE:
       loadCommpMorse();
       break;
 
-    case "#"+healthPAge:
+    case "#" + healthPAge:
       loadHealth();
       break;
 
-    case "#"+qrPAge:
+    case "#" + qrPAge:
       loadQRgen();
       break;
 
-      case "#"+DNAANLYSIS:
-        loadDanAnylisis();
-        break;
-  
+    case "#" + DNAANLYSIS:
+      loadDanAnylisis();
+      break;
+    case "#" + audioTuner:
+      tunerview();
+      break;
     default:
       console.log("No matching case for:", loc);
- 
+
       break;
   }
 }

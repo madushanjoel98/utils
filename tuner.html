@@ -1,0 +1,30 @@
+
+
+        
+    </div>
+     <link rel="stylesheet" href="css/tunerstyle.css" />
+    <canvas class="frequency-bars"></canvas>
+    <div class="meter">
+      <div class="meter-dot"></div>
+      <div class="meter-pointer"></div>
+    </div>
+    <div class="notes">
+      <div class="notes-list"></div>
+      <div class="frequency">
+        <span>Hz</span>
+      </div>
+    </div>
+    <div class="a4">A<sub>4</sub> = <span>440</span> Hz</div>
+    <label class="auto">
+      Auto
+      <input type="checkbox" checked />
+      <span>       <i class="fa fa-arrow-left" style=" cursor: pointer;" aria-hidden="true" onclick="toogs('whatsch')"></i></span>
+    </label>
+
+    <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>
+    <script src="tunerjs/tuner.js"></script>
+    <script src="tunerjs/meter.js"></script>
+    <script src="tunerjs/frequency-bars.js"></script>
+    <script src="tunerjs/notes.js"></script>
+    <script src="tunerjs/app.js"></script>
+
