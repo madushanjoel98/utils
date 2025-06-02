@@ -1,26 +1,72 @@
-<div class="">
-    <div class="card-body">
-        <h1 class="text-center"><i class="fa fa-arrow-left" style=" cursor: pointer;" aria-hidden="true" onclick="toogs('whatsch')"></i> Base64 Encoder/Decoder</h1>
-        <div class="form-group">
-            <div class="wem" >
-                <textarea id="outputx" class="form-control mb-3" rows="3" disabled></textarea>
-                <div class="mt-3 mb-5">
-                    <button class="btn btn-warning" onclick="resetFields()">Reset</button>
-                    <button class="btn btn-info" onclick="copyToClipboard('outputx')"><i class="fa fa-clipboard" aria-hidden="true"></i> Clipboard</button>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<h1 class="text-center">
+                        <i class="fa fa-arrow-left" style="cursor: pointer;" aria-hidden="true" onclick="toogs('whatsch')"></i>
+                        Base64 Encoder/Decoder
+                    </h1>
+<div class="container mt-4">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="encoderTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="text-tab" data-toggle="tab" href="#textEncoder" role="tab" aria-controls="textEncoder" aria-selected="true">Text Encoder/Decoder</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="image-tab" data-toggle="tab" href="#imageEncoder" role="tab" aria-controls="imageEncoder" aria-selected="false">Image Encoder/Decoder</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content" id="encoderTabsContent">
+        <div class="tab-pane fade show active" id="textEncoder" role="tabpanel" aria-labelledby="text-tab">
+            <div class="card mt-3">
+                <div class="card-body">
+                    
+                    <div class="form-group">
+                        <div class="wem">
+                            <textarea id="outputx" class="form-control mb-3" rows="3" disabled></textarea>
+                            <div class="mt-3 mb-5">
+                                <button class="btn btn-warning" onclick="resetFields()">Reset</button>
+                                <button class="btn btn-info" onclick="copyToClipboard('outputx')">
+                                    <i class="fa fa-clipboard" aria-hidden="true"></i> Clipboard
+                                </button>
+                            </div>
+                        </div>
+                        <textarea class="form-control mb-3" id="input" placeholder="Insert your Text"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-primary" onclick="decodeBase64()">Decode</button>
+                        <button class="btn btn-success" onclick="encodeBase64()">Encode</button>
+                    </div>
+                    <p class="text-center mt-3">
+                        <span id="output" class="font-weight-bold text-danger"></span>
+                    </p>
                 </div>
             </div>
-
-            <textarea class="form-control mb-3" id="input" placeholder="Insert your Text"></textarea>
-
         </div>
-        <div class="d-flex justify-content-between">
-            <button class="btn btn-primary" onclick="decodeBase64()">Decode</button>
-            <button class="btn btn-success" onclick="encodeBase64()">Encode</button>
+        <div class="tab-pane fade" id="imageEncoder" role="tabpanel" aria-labelledby="image-tab">
+            <div class="card mt-3">
+                <div class="card-body">
+                 
+                    <div class="form-group">
+                        <label>Select Image to Encode:</label>
+                        <input type="file" id="imageInput" class="form-control mb-2" accept="image/*" onchange="encodeImageToBase64()">
+                        <textarea id="encodedImageOutput" class="form-control mb-3" rows="4" placeholder="Encoded Base64 will appear here..."></textarea>
+                        <button class="btn btn-info" onclick="copyToClipboard('encodedImageOutput')">Copy Encoded</button>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label>Paste Base64 to Decode:</label>
+                        <textarea id="decodeImageInput" class="form-control mb-2" rows="4" placeholder="Paste Base64 image string here..."></textarea>
+                        <button class="btn btn-primary" onclick="decodeBase64ToImage()">Show Image</button>
+                        <div id="decodedImagePreview" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <p class="text-center mt-3"><span id="output" class="font-weight-bold text-danger"></span></p>
     </div>
 </div>
+
 <script>
-     $(".wem").hide();
+    // If you want to keep hiding .wem by default
+    $(".wem").hide();
 </script>

@@ -88,3 +88,34 @@ function texttomosclick() {
 
     $('#resultTextmorse').val(text);
   }
+// Encode selected image to Base64
+function encodeImageToBase64() {
+    const fileInput = document.getElementById('imageInput');
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const base64String = e.target.result;
+        document.getElementById('encodedImageOutput').value = base64String;
+    };
+    reader.readAsDataURL(file);
+}
+
+// Decode Base64 string into image preview
+function decodeBase64ToImage() {
+    const base64String = document.getElementById('decodeImageInput').value.trim();
+    if (!base64String) {
+        alert("Please paste a Base64 image string.");
+        return;
+    }
+
+    const img = document.createElement('img');
+    img.src = base64String;
+    img.alt = "Decoded Image";
+    img.className = "img-fluid mt-2";
+
+    const previewContainer = document.getElementById('decodedImagePreview');
+    previewContainer.innerHTML = ''; // clear previous
+    previewContainer.appendChild(img);
+}
