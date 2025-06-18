@@ -1,0 +1,57 @@
+[
+  {
+    "module_name": "WhatsApp Chat viewer",
+    "image_src": "img/whatsapp.png",
+    "function_call": "loadWhatsAppChatter()",
+    "css":"whatsapp"
+  },
+  {
+    "module_name": "BASE64 Encoder/Decoder",
+    "image_src": "https://img.icons8.com/external-sbts2018-outline-sbts2018/58/external-encryption-cryptocurrency-sbts2018-outline-sbts2018.png",
+    "function_call": "loadCommponetencription()",
+      "css":"encryptionsd"
+  },
+  {
+    "module_name": "Morse converter",
+    "image_src": "https://img.icons8.com/external-febrian-hidayat-detailed-outline-febrian-hidayat/64/external-49-communication-and-technology-febrian-hidayat-detailed-outline-febrian-hidayat.png",
+    "function_call": "loadCommpMorse('')"
+     ,"css":"morsebg"
+  },
+  {
+    "module_name": "Health & fitness",
+    "image_src": "img/healthicon.png",
+    
+    "function_call": "loadHealth('')"
+     ,"css":"healthbg"
+  },
+  {
+    "module_name": "QR Generator",
+    "image_src": "img/qr.png",
+    "function_call": "loadQRgen('')"
+     ,"css":"qrbg"
+  },
+  {
+    "module_name": "DNA LABS (Beta)",
+    "image_src": "img/microscope_947539.png",
+    "function_call": "loadDanAnylisis('')"
+     ,"css":""
+  },
+  {
+    "module_name": "Transaction Clarification",
+    "image_src": "img/baramuda.png",
+    "function_call": "trcBramuda()"
+     ,"css":"baramudabg"
+  },
+  {
+    "module_name": "Smart Dele",
+    "image_src": "img/table.png",
+    "function_call": "loadsmartdele()"
+     ,"css":"dnabg"
+  },
+  {
+    "module_name": "Audio Tuner",
+    "image_src": "img/retro-radio-tuner.PNG",
+    "function_call": "tunerview()"
+     ,"css":"tunercl"
+  }
+]

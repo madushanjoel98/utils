@@ -1,0 +1,83 @@
+<div class="container py-4">
+    <h1 class="b-4 text-center">
+  <i class="fa fa-arrow-left" style="cursor: pointer;" aria-hidden="true" onclick="toogs('whatsch')"></i>
+  Food Nutrition
+</h1>
+<div class="b-4 text-center">
+    <p>Some foods are not available(it will be updating). this page fully focus on Sri Lankan foods <img src="img/slflag.png" width="25px"> </p>
+</div>
+
+    <!-- Search box -->
+    <input id="searchBox" class="form-control mb-4" type="text" placeholder="Search food name or manufacturer...">
+
+    <!-- Cards container -->
+    <div id="cardContainer" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Cards will be injected here -->
+    </div>
+</div>
+
+<!-- jQuery and Bootstrap JS -->
+
+
+<!-- App Script -->
+<script>
+    $(document).ready(function () {
+        let allItems = [];
+
+        // Fetch JSON data
+        $.getJSON("json/sl_foodnurtion.json", function (data) {
+            allItems = data;
+            renderCards(allItems);
+        });
+
+        // Render cards
+        function renderCards(items) {
+            const container = $("#cardContainer");
+            container.empty();
+
+            if (items.length === 0) {
+                container.append(`<div class="col"><p>No items found.</p></div>`);
+                return;
+            }
+
+            items.forEach(item => {
+                const calories = parseFloat(item.kcl) || 0;
+                const sugar = parseFloat(item.suger) || 0;
+
+                const card = `
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">${item.name}</h5>
+            <p class="card-text"><strong>Manufacturer:</strong> ${item.manufacter}</p>
+
+            <p class="card-text"><strong>Calories:</strong> ${calories} (${item.kcl_per || "N/A"})</p>
+            <div class="progress mb-2" style="height: 10px;">
+              <div class="progress-bar bg-danger" role="progressbar" style="width: ${Math.min(calories, 500) / 5}%;" aria-valuenow="${calories}" aria-valuemin="0" aria-valuemax="500"></div>
+            </div>
+
+            <p class="card-text"><strong>Sugar:</strong> ${item.suger || "N/A"} (${item.suger_per || ""})</p>
+            <div class="progress mb-2" style="height: 10px;">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: ${Math.min(sugar, 100)}%;" aria-valuenow="${sugar}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <p class="card-text"><strong>Protein:</strong> ${item.protein || "N/A"}</p>
+            <p class="card-text"><strong>Salt:</strong> ${item.salt || "N/A"}</p>
+          </div>
+        </div>
+      </div>
+    `;
+                container.append(card);
+            });
+        }
+        // Search function
+        $("#searchBox").on("input", function () {
+            const query = $(this).val().toLowerCase();
+            const filtered = allItems.filter(item =>
+                item.name.toLowerCase().includes(query) ||
+                item.manufacter.toLowerCase().includes(query)
+            );
+            renderCards(filtered);
+        });
+    });
+</script>

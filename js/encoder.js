@@ -1,3 +1,5 @@
+
+
 function encodeBase64() {
     var inputString = document.getElementById("input").value;
     try {
@@ -9,6 +11,9 @@ function encodeBase64() {
         document.getElementById("output").textContent = "Invalid input string";
     }
 }
+
+
+
 
 function resetFields() {
     $("#input").val('');
@@ -90,6 +95,7 @@ function texttomosclick() {
   }
 // Encode selected image to Base64
 function encodeImageToBase64() {
+
     const fileInput = document.getElementById('imageInput');
     const file = fileInput.files[0];
     if (!file) return;
@@ -98,12 +104,14 @@ function encodeImageToBase64() {
     reader.onload = function (e) {
         const base64String = e.target.result;
         document.getElementById('encodedImageOutput').value = base64String;
+        
     };
     reader.readAsDataURL(file);
 }
 
 // Decode Base64 string into image preview
 function decodeBase64ToImage() {
+    
     const base64String = document.getElementById('decodeImageInput').value.trim();
     if (!base64String) {
         alert("Please paste a Base64 image string.");
@@ -118,4 +126,5 @@ function decodeBase64ToImage() {
     const previewContainer = document.getElementById('decodedImagePreview');
     previewContainer.innerHTML = ''; // clear previous
     previewContainer.appendChild(img);
+    
 }

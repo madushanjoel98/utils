@@ -1,0 +1,271 @@
+
+
+
+    <script src="js/datatable.js"
+        integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/xlsxfull.js"></script>
+
+    <div class="container mt-5">
+        <h1 class="mb-4"><i class="fa fa-arrow-left" style=" cursor: pointer;" aria-hidden="true" onclick="toogs('whatsch')"></i> <i class="fa-solid fa-file-excel text-success"></i> MR.DELE</h1>
+        <small class="mb-4 text-light">Convert Delimiter text to Excel</small>
+        <br>
+
+        <ul class="nav nav-tabs" id="uploadTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="upload-tab" data-bs-toggle="tab" data-bs-target="#upload"
+                    type="button" role="tab" aria-controls="upload" aria-selected="true">
+                    <i class="fa-solid fa-upload"></i> Upload
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="text-tab" data-bs-toggle="tab" data-bs-target="#text" type="button"
+                    role="tab" aria-controls="text" aria-selected="false">
+                    <i class="fa-solid fa-file-lines"></i> Text
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="uploadTabContent">
+            <div class="tab-pane fade show active" id="upload" role="tabpanel" aria-labelledby="upload-tab">
+                <form id="convform" class="row g-3 mt-2 frmv text-light">
+                    <div>
+                        <label for="delimiter">Delimiter</label>
+                        <input type="text" id="delimiter" class="form-control"
+                            placeholder="Enter Delimiter (e.g., , or | or &#9; for tab)">
+                    </div>
+                    <div id="drop-area" class="border border-primary rounded p-5 text-center bg-light">
+
+                        <p class="lead text-dark">Drag & Drop your file here or click to select</p>
+                        <input type="file" id="fileElem" class="d-none" accept=".txt,.csv" />
+                        <button type="button" class="btn btn-primary" id="fileSelectBtn">Select File</button>
+                        <div id="fileList" class="mt-3"></div>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-success mt-3">
+                            <i class="fa-solid fa-rotate-right"></i> Convert File to Excel
+                        </button>
+                        <button id="viewFileTableBtn" type="button" class="btn btn-primary mt-3"><i
+                                class="fa-solid fa-table"></i> View as table</button>
+                    </div>
+
+                </form>
+                <div id="fileViewTable" class="table-responsive"></div>
+            </div>
+
+            <div class="tab-pane fade" id="text" role="tabpanel" aria-labelledby="text-tab">
+                <form id="textform">
+                    <div class="mt-3 text-light">
+                        <div>
+                            <label for="tdelimiter">Delimiter</label>
+                            <input class="form-control" type="text" id="tdelimiter"
+                                placeholder="Enter Delimiter (e.g., , or | or &#9; for tab)">
+                        </div>
+                        <label for="rawTextInput" class="form-label">Paste Delimited Text</label>
+                        <textarea id="rawTextInput" class="form-control" rows="6"
+                            placeholder="Paste text here..."></textarea>
+
+                        <button type="submit" class="btn btn-success mt-3"><i class="fa-solid fa-rotate-right"></i>
+                            Convert Text to Excel</button>
+                        <button id="viewTableBtn" type="button" class="btn btn-primary mt-3"><i
+                                class="fa-solid fa-table"></i> View as table</button>
+                    </div>
+                </form>
+                <div id="viewtable" class="table-responsive"></div>
+            </div>
+        </div>
+        <br>
+        <small><i class="fa-solid fa-code"></i> Developed by Madushan Joel |
+          </small>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var dropArea = $('#drop-area');
+            var fileElem = $('#fileElem');
+            var fileList = $('#fileList');
+            var droppedFile = null; // for drag-and-drop
+
+            // Drag enter/leave/over
+            dropArea.on('dragover', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropArea.addClass('bg-info');
+            });
+
+            dropArea.on('dragleave', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropArea.removeClass('bg-info');
+            });
+
+            dropArea.on('drop', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropArea.removeClass('bg-info');
+
+                let files = e.originalEvent.dataTransfer.files;
+                if (files.length > 0) {
+                    droppedFile = files[0]; // Store dropped file
+                    showFileName(droppedFile.name);
+                }
+            });
+
+            $('#fileSelectBtn').on('click', function () {
+                fileElem.click();
+            });
+
+            fileElem.on('change', function (e) {
+                droppedFile = e.target.files[0]; // Sync file from file input
+                showFileName(droppedFile.name);
+            });
+
+            function showFileName(name) {
+                fileList.html('<div class="alert alert-success">' + name + '</div>');
+            }
+
+            $("#convform").submit(function (e) {
+                e.preventDefault();
+                convertFileToExcel();
+            });
+
+            $("#textform").submit(function (e) {
+                e.preventDefault();
+                convertTextToExcel();
+            });
+
+            function convertFileToExcel() {
+                if (!droppedFile) {
+                    alert("Please select or drop a file.");
+                    return;
+                }
+
+                const delimiter = $('#delimiter').val() || ',';
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const fileContent = e.target.result;
+                    const data = parseDelimitedText(fileContent, delimiter);
+                    exportToExcel(data, "converted_file.xlsx");
+                };
+
+                reader.onerror = function (e) {
+                    alert("Error reading file: " + e.target.error.name);
+                };
+
+                reader.readAsText(droppedFile); // Read file as text
+            }
+
+            function convertTextToExcel() {
+                const rawText = $("#rawTextInput").val();
+                const delimiter = $("#tdelimiter").val() || ",";
+
+                if (!rawText.trim()) {
+                    alert("Please enter some text.");
+                    return;
+                }
+
+                const data = parseDelimitedText(rawText, delimiter);
+                exportToExcel(data, "converted_from_text.xlsx");
+            }
+
+            function parseDelimitedText(text, delimiter) {
+                // Handle common delimiters: comma, tab, pipe, semicolon
+                let actualDelimiter = delimiter;
+                if (delimiter === "\\t") { // Allow \t for tab input
+                    actualDelimiter = "\t";
+                }
+
+                const lines = text.split(/\r?\n/).filter(line => line.trim() !== "");
+                const data = lines.map(line => line.split(actualDelimiter));
+                return data;
+            }
+
+            function exportToExcel(data, filename) {
+                if (!Array.isArray(data) || data.length === 0) {
+                    alert("No data to export to Excel.");
+                    return;
+                }
+
+                const ws = XLSX.utils.aoa_to_sheet(data);
+                const wb = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+                XLSX.writeFile(wb, filename);
+            }
+
+            // Function to display table for text input
+            $("#viewTableBtn").on("click", function () {
+                const rawText = $("#rawTextInput").val();
+                const delimiter = $("#tdelimiter").val() || ",";
+                displayTable(rawText, delimiter, '#viewtable', '#dataTablePreviewText');
+            });
+
+            // Function to display table for file input
+            $("#viewFileTableBtn").on("click", function () {
+                if (!droppedFile) {
+                    alert("Please select or drop a file first.");
+                    return;
+                }
+
+                const delimiter = $('#delimiter').val() || ',';
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const fileContent = e.target.result;
+                    displayTable(fileContent, delimiter, '#fileViewTable', '#dataTablePreviewFile');
+                };
+
+                reader.onerror = function (e) {
+                    alert("Error reading file for table view: " + e.target.error.name);
+                };
+
+                reader.readAsText(droppedFile);
+            });
+
+            // Reusable function to display table
+            function displayTable(content, delimiter, targetDivId, tableId) {
+                if (!content.trim()) {
+                    $(targetDivId).html("<p class='text-warning mt-3'>No data to display in table.</p>");
+                    return;
+                }
+
+                // Clear any existing DataTable instance before re-initializing
+                if ($.fn.DataTable.isDataTable(tableId)) {
+                    $(tableId).DataTable().destroy();
+                }
+                $(targetDivId).empty(); // Clear previous table content
+
+                // Handle actual delimiter for display (e.g., '\t' for tab)
+                let actualDelimiter = delimiter;
+                if (delimiter === "\\t") {
+                    actualDelimiter = "\t";
+                }
+
+                const lines = content.split(/\r?\n/).filter(line => line.trim() !== "");
+
+                if (lines.length > 0) {
+                    let tableHtml = `<table id='${tableId.substring(1)}' class='table table-bordered table-striped table-dark mt-3'><thead><tr>`;
+                    const firstLineCells = lines[0].split(actualDelimiter);
+                    firstLineCells.forEach((_, index) => {
+                        tableHtml += `<th>Column ${index + 1}</th>`;
+                    });
+                    tableHtml += "</tr></thead><tbody>";
+
+                    lines.forEach(line => {
+                        const cells = line.split(actualDelimiter).map(cell => `<td>${$('<div>').text(cell).html()}</td>`);
+                        tableHtml += `<tr>${cells.join('')}</tr>`;
+                    });
+                    tableHtml += "</tbody></table>";
+                    $(targetDivId).html(tableHtml);
+
+                    // Initialize DataTable
+                    $(tableId).DataTable({
+                        responsive: true,
+                    });
+                } else {
+                    $(targetDivId).html("<p class='text-warning mt-3'>No data to display in table.</p>");
+                }
+            }
+        });
+    </script>
+
