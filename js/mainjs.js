@@ -12,13 +12,15 @@ var smartdelemter="smartdelemter";
 
 
 let fileCode = 'json/modulesset.json';
-loadFmodules();
+
 function loadFmodules() {
+  HoldOn.open();
   $("#moduleverse").empty();
     $.getJSON(fileCode, function(data) {
      data.forEach(element => {
         $("#moduleverse").append(createmodelDivs(element));
      });
+       HoldOn.close();
 });
 }
 function createmodelDivs(element){

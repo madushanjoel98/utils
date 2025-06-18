@@ -157,6 +157,7 @@
             }
 
             function convertTextToExcel() {
+                  HoldOn.open();
                 const rawText = $("#rawTextInput").val();
                 const delimiter = $("#tdelimiter").val() || ",";
 
@@ -166,7 +167,9 @@
                 }
 
                 const data = parseDelimitedText(rawText, delimiter);
+                  HoldOn.close();
                 exportToExcel(data, "converted_from_text.xlsx");
+
             }
 
             function parseDelimitedText(text, delimiter) {
@@ -195,18 +198,21 @@
 
             // Function to display table for text input
             $("#viewTableBtn").on("click", function () {
+                HoldOn.open();
                 const rawText = $("#rawTextInput").val();
                 const delimiter = $("#tdelimiter").val() || ",";
                 displayTable(rawText, delimiter, '#viewtable', '#dataTablePreviewText');
+                HoldOn.close();
             });
 
             // Function to display table for file input
             $("#viewFileTableBtn").on("click", function () {
+                HoldOn.open();
                 if (!droppedFile) {
                     alert("Please select or drop a file first.");
                     return;
                 }
-
+              
                 const delimiter = $('#delimiter').val() || ',';
                 const reader = new FileReader();
 
@@ -220,6 +226,7 @@
                 };
 
                 reader.readAsText(droppedFile);
+                HoldOn.close();
             });
 
             // Reusable function to display table
