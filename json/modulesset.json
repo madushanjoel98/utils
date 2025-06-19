@@ -34,7 +34,7 @@
     "module_name": "DNA LABS (Beta)",
     "image_src": "img/microscope_947539.png",
     "function_call": "loadDanAnylisis('')"
-     ,"css":""
+     ,"css":"bg-primary"
   },
   {
     "module_name": "Transaction Clarification",
