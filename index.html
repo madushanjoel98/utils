@@ -21,7 +21,10 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="holdon/holdon.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css" integrity="sha512-BMbq2It2D3J17/C7aRklzOODG1IQ3+MHw3ifzBHMBwGO/0yUqYmsStgBjI0z5EYlaDEFnvYV7gNYdD3vFLRKsA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css"
+    integrity="sha512-BMbq2It2D3J17/C7aRklzOODG1IQ3+MHw3ifzBHMBwGO/0yUqYmsStgBjI0z5EYlaDEFnvYV7gNYdD3vFLRKsA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="css/main.css" rel="stylesheet">
   <script src="js/encoder.js"></script>
   <script src="js/mainjs.js"></script>
@@ -59,12 +62,21 @@
     <div id="navs">
 
       <div id="connts">
-
-  <div class="d-flex flex- row " id="moduleverse"></div>
-     
-
-
-
+         <div class="scontainer mt-2">
+          <input onchange="onchangesSearch()" id="moduleSearch" type="text" name="text" class="sinput" required=""
+            placeholder="Type to search...">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+              <title>Search</title>
+              <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none"
+                stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
+              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"
+                d="M338.29 338.29L448 448"></path>
+            </svg>
+          </div>
+        </div>
+       
+        <div class="d-flex flex- row " id="moduleverse"></div>
       </div>
 
 
@@ -107,7 +119,7 @@
       // $("#navs").load("content.html");
       checkDarkMood();
       urlHashChecker();
-loadFmodules();
+      loadFmodules();
     });
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("js/service-worker.js")

@@ -12,17 +12,54 @@ var smartdelemter="smartdelemter";
 
 
 let fileCode = 'json/modulesset.json';
+let allModules = []; // to store the original list
 
+// This function loads modules and stores them, then renders them
 function loadFmodules() {
-  HoldOn.open();
-  $("#moduleverse").empty();
+    HoldOn.open(); // Assuming HoldOn is a loading indicator
+    $("#moduleverse").empty();
+
     $.getJSON(fileCode, function(data) {
-     data.forEach(element => {
-        $("#moduleverse").append(createmodelDivs(element));
-     });
-       HoldOn.close();
-});
+        allModules = data; // Store the full data for searching
+        renderModules(data); // Render all modules initially
+        HoldOn.close();
+    }).fail(function() {
+        console.error("Error loading moduleset.json");
+        HoldOn.close();
+    });
 }
+
+// This function renders the provided list of modules
+function renderModules(modulesToRender) {
+    $("#moduleverse").empty();
+    if (modulesToRender.length === 0) {
+        $("#moduleverse").append("<p>No modules found matching your search.</p>");
+        return;
+    }
+    modulesToRender.forEach(element => {
+        $("#moduleverse").append(createmodelDivs(element)); // Assuming createmodelDivs exists
+    });
+}
+
+// This function handles the search logic
+function onchangesSearch() {
+    const query = $("#moduleSearch").val().toLowerCase();
+
+    const filtered = allModules.filter(mod =>
+        mod.module_name.toLowerCase().includes(query)
+    );
+
+    console.log("Filtered modules:", filtered); // For debugging
+    renderModules(filtered);
+}
+
+// Initialize the modules when the document is ready
+$(document).ready(function() {
+    loadFmodules();
+
+    // Attach the event listener for the search input
+    $("#moduleSearch").on("input", onchangesSearch);
+});
 function createmodelDivs(element){
 const layer = ` <div class="col p-2 m-4 text-white">
 

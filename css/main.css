@@ -1,296 +1,355 @@
 .center {
-    margin: auto;
-    width: 50%;
-  
-    padding: 10px;
-  }
-  /* From Uiverse.io by Samalander0 */ 
-  .cards {
-    width: 320px;
-   
-    color: black;
-    position: relative;
-    border-radius: 2.5em;
-    padding: 2em;
-    transition: transform 0.4s ease;
-  }
-  
-  .cards .cards-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 5em;
-    height: 100%;
-    transition: transform 0.4s ease;
-  }
-  
-  .cards .cards-top, .cards .cards-bottom {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .cards .cards-top p, .cards .cards-top .cards-title, .cards .cards-bottom p, .cards .cards-bottom .cards-title {
-    margin: 0;
-  }
-  
-  .cards .cards-title {
-    font-weight: bold;
-  }
-  
-  .cards .cards-top p, .cards .cards-bottom p {
-    font-weight: 600;
-  }
-  
-  .cards .cards-bottom {
-    align-items: flex-end;
-  }
-  
-  .cards .cards-image {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    display: grid;
-    place-items: center;
-    pointer-events: none;
-  }
-  
-  .cards .cards-image svg {
-    width: 4em;
-    height: 4em;
-    transition: transform 0.4s ease;
-  }
-  
-  .cards:hover {
-    cursor: pointer;
-    transform: scale(0.97);
-  }
-  
-  .cards:hover .cards-content {
-    transform: scale(0.96);
-  }
-  
-  .cards:hover .cards-image svg {
-    transform: scale(1.05);
-  }
-  
-  .cards:active {
-    transform: scale(0.9);
-  }
-  .whatsapp{
-      background-color: lightgreen;
-  }
-  .encryptionsd{
-      background-color: rgb(144, 238, 225);
-  }
-  .morsebg{
-      background-color: rgb(127, 73, 253);
-  }
-  .healthbg{
-    background-color: rgb(255, 35, 46);
+  margin: auto;
+  width: 50%;
+
+  padding: 10px;
 }
-  .oldbg{
-     background-color: antiquewhite;
-  }
-.qrbg{
+/* From Uiverse.io by Samalander0 */
+.cards {
+  width: 320px;
+
+  color: black;
+  position: relative;
+  border-radius: 2.5em;
+  padding: 2em;
+  transition: transform 0.4s ease;
+}
+
+.cards .cards-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5em;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.cards .cards-top,
+.cards .cards-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cards .cards-top p,
+.cards .cards-top .cards-title,
+.cards .cards-bottom p,
+.cards .cards-bottom .cards-title {
+  margin: 0;
+}
+
+.cards .cards-title {
+  font-weight: bold;
+}
+
+.cards .cards-top p,
+.cards .cards-bottom p {
+  font-weight: 600;
+}
+
+.cards .cards-bottom {
+  align-items: flex-end;
+}
+
+.cards .cards-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.cards .cards-image svg {
+  width: 4em;
+  height: 4em;
+  transition: transform 0.4s ease;
+}
+
+.cards:hover {
+  cursor: pointer;
+  transform: scale(0.97);
+}
+
+.cards:hover .cards-content {
+  transform: scale(0.96);
+}
+
+.cards:hover .cards-image svg {
+  transform: scale(1.05);
+}
+
+.cards:active {
+  transform: scale(0.9);
+}
+.whatsapp {
+  background-color: lightgreen;
+}
+.encryptionsd {
+  background-color: rgb(144, 238, 225);
+}
+.morsebg {
+  background-color: rgb(127, 73, 253);
+}
+.healthbg {
+  background-color: rgb(255, 35, 46);
+}
+.oldbg {
+  background-color: antiquewhite;
+}
+.qrbg {
   background-color: rgb(250, 211, 160);
 }
 
-.dnabg{
+.dnabg {
   background-color: rgb(71, 54, 170);
   color: white;
 }
-  .loader {
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #3498db;
-    width: 120px;
-    height: 120px;
-    -webkit-animation: spin 2s linear infinite; /* Safari */
-    animation: spin 2s linear infinite;
-  }
-  
-  /* Safari */
-  @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
 
-  /* From Uiverse.io by andrew-demchenk0 */ 
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* From Uiverse.io by andrew-demchenk0 */
 .switch {
-    font-size: 17px;
-    position: relative;
-    display: inline-block;
-    width: 64px;
-    height: 34px;
-  }
-  
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #73C0FC;
-    transition: .4s;
-    border-radius: 30px;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 30px;
-    width: 30px;
-    border-radius: 20px;
-    left: 2px;
-    bottom: 2px;
-    z-index: 2;
-    background-color: #e8e8e8;
-    transition: .4s;
-  }
-  
-  .sun svg {
-    position: absolute;
-    top: 6px;
-    left: 36px;
-    z-index: 1;
-    width: 24px;
-    height: 24px;
-  }
-  
-  .moon svg {
-    fill: #73C0FC;
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    z-index: 1;
-    width: 24px;
-    height: 24px;
-  }
-  
-  /* .switch:hover */.sun svg {
-    animation: rotate 15s linear infinite;
-  }
-  
-  @keyframes rotate {
-   
-    0% {
-      transform: rotate(0);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  /* .switch:hover */.moon svg {
-    animation: tilt 5s linear infinite;
-  }
-  
-  @keyframes tilt {
-   
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    25% {
-      transform: rotate(-10deg);
-    }
-  
-    75% {
-      transform: rotate(10deg);
-    }
-  
-    100% {
-      transform: rotate(0deg);
-    }
-  }
-  
-  .input:checked + .slider {
-    background-color: #183153;
-  }
-  
-  .input:focus + .slider {
-    box-shadow: 0 0 1px #183153;
-  }
-  
-  .input:checked + .slider:before {
-    transform: translateX(30px);
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #73c0fc;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  left: 2px;
+  bottom: 2px;
+  z-index: 2;
+  background-color: #e8e8e8;
+  transition: 0.4s;
+}
+
+.sun svg {
+  position: absolute;
+  top: 6px;
+  left: 36px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+}
+
+.moon svg {
+  fill: #73c0fc;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+}
+
+/* .switch:hover */
+.sun svg {
+  animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
   }
 
-  .healthcard {
-    width: 100%;
-   
-    height: 170px;
-    background: #353535;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    backdrop-filter: blur(10px);
-    transition: 0.5s ease-in-out;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  .healthcard:hover {
-    cursor: pointer;
-    transform: scale(1.05);
+}
+
+/* .switch:hover */
+.moon svg {
+  animation: tilt 5s linear infinite;
+}
+
+@keyframes tilt {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .healthimg {
-    width: 50px;
-    height: 50px;
-    margin-left: 10px;
-    border-radius: 10px;
-   
+
+  25% {
+    transform: rotate(-10deg);
   }
-  
-  .healthcard:hover > .healthimg {
-    transition: 0.5s ease-in-out;
-   
+
+  75% {
+    transform: rotate(10deg);
   }
-  
-  .healthtextBox {
-    width: calc(100% - 90px);
-    margin-left: 10px;
-    color: white;
-    font-family: 'healthpohealthphealthpins' sans-serif;
+
+  100% {
+    transform: rotate(0deg);
   }
-  
-  .healthtextContent {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .shealthpan {
-    font-size: 10px;
-  }
-  
-  .health1 {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .healthp {
-    font-size: 12px;
-    font-weight: lighter;
-  }
-  .baramudabg{
-    background-color: #4A34FF;
-  }
-    .tunercl{
-    background-color: #fffc2e;
-  }
+}
+
+.input:checked + .slider {
+  background-color: #183153;
+}
+
+.input:focus + .slider {
+  box-shadow: 0 0 1px #183153;
+}
+
+.input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.healthcard {
+  width: 100%;
+
+  height: 170px;
+  background: #353535;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  backdrop-filter: blur(10px);
+  transition: 0.5s ease-in-out;
+}
+
+.healthcard:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.healthimg {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+.healthcard:hover > .healthimg {
+  transition: 0.5s ease-in-out;
+}
+
+.healthtextBox {
+  width: calc(100% - 90px);
+  margin-left: 10px;
+  color: white;
+  font-family: "healthpohealthphealthpins" sans-serif;
+}
+
+.healthtextContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shealthpan {
+  font-size: 10px;
+}
+
+.health1 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.healthp {
+  font-size: 12px;
+  font-weight: lighter;
+}
+.baramudabg {
+  background-color: #4a34ff;
+}
+.tunercl {
+  background-color: #fffc2e;
+}
+.scontainer {
+  position: relative;
+  --size-button: 40px;
+  color: white;
+}
+
+.sinput {
+  padding-left: var(--size-button);
+  height: var(--size-button);
+  font-size: 15px;
+  border: none;
+  color: #fff;
+  outline: none;
+  width: var(--size-button);
+  transition: all ease 0.3s;
+  background-color: #191A1E;
+  box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.sinput:focus,
+.sinput:not(:invalid) {
+  width: 200px;
+  cursor: text;
+  box-shadow: 0px 0px 0px #0e0e0e, 0px 0px 0px rgb(95 94 94 / 25%), inset 1.5px 1.5px 3px #0e0e0e, inset -1.5px -1.5px 3px #5f5e5e;
+}
+
+.sinput:focus + .icon,
+.sinput:not(:invalid) + .icon {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.scontainer .icon {
+  position: absolute;
+  width: var(--size-button);
+  height: var(--size-button);
+  top: 0;
+  left: 0;
+  padding: 8px;
+  pointer-events: none;
+}
+
+.scontainer .icon svg {
+  width: 100%;
+  height: 100%;
+}
