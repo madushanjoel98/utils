@@ -54,4 +54,11 @@
     "function_call": "tunerview()"
      ,"css":"tunercl"
   }
+,
+  {
+    "module_name": "Frequency Emitter",
+    "image_src": "img/retro-radio-tuner.PNG",
+    "function_call": "loadsoundtuner()"
+     ,"css":"bg-primary"
+  }
 ]

@@ -1,0 +1,249 @@
+
+
+  <style>
+    .tbody {
+      margin: 0;
+      background: radial-gradient(ellipse at center, #0c0c0c 0%, #000000 100%);
+      font-family: 'Segoe UI', sans-serif;
+      color: #00ffcc;
+      height: 100vh;
+      display: flex;
+      flex-direction: column; /* Changed to column to stack elements */
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(0, 255, 204, 0.05);
+      padding: 40px;
+      border: 2px solid #00ffcc55;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #00ffcc44;
+      backdrop-filter: blur(5px);
+      margin-bottom: 20px; /* Added margin for separation */
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 0 15px #00ffcc;
+    }
+
+    button {
+      background: none;
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 5px #00ffcc;
+      margin: 10px; /* Added margin to buttons */
+    }
+
+    button:hover {
+      background: #00ffcc22;
+      box-shadow: 0 0 15px #00ffcc;
+      transform: scale(1.05);
+    }
+
+    .logo {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      opacity: 0.03;
+      width: 200px;
+      z-index: 0;
+    }
+
+    #frequencyChartContainer {
+        width: 80%; /* Adjust width as needed */
+        max-width: 600px; /* Max width for the chart */
+        background: rgba(0, 255, 204, 0.05);
+        border: 2px solid #00ffcc55;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 0 30px #00ffcc44;
+        backdrop-filter: blur(5px);
+    }
+  </style>
+
+<div class="tbody">
+  <div class="container">
+    <h1><i class="fa fa-arrow-left" style=" cursor: pointer;" aria-hidden="true" onclick="toogs('whatsch')"></i>  Frequency Emitter</h1>
+    <p>Adjust Frequency: <input type="range" min="20" max="20000" value="440" id="frequencySlider" oninput="updateFrequencyValue(this.value)"></p>
+    <p>Current Frequency: <span id="currentFrequency">440</span> Hz</p>
+    <button onclick="playCustomFrequency()">Play Custom Frequency</button>
+    <button onclick="playFixedFrequency(18000, 3)">Play 18,000 Hz for 3 sec</button>
+  </div>
+
+  <div id="frequencyChartContainer">
+      <canvas id="frequencyChart"></canvas>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let audioCtx;
+    let oscillator;
+    let gainNode;
+    let frequencyChart;
+    let chartData = [];
+    const maxChartDataPoints = 50; // Number of data points to display on the chart
+
+    function initAudio() {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        oscillator = audioCtx.createOscillator();
+        gainNode = audioCtx.createGain();
+
+        oscillator.type = 'sine';
+        gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime); // Initial gain
+        oscillator.connect(gainNode).connect(audioCtx.destination);
+    }
+
+    function initChart() {
+        const ctx = document.getElementById('frequencyChart').getContext('2d');
+        frequencyChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [], // Time labels will go here
+                datasets: [{
+                    label: 'Frequency (Hz)',
+                    data: [], // Frequency data will go here
+                    borderColor: '#00ffcc',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time (seconds)',
+                            color: '#00ffcc'
+                        },
+                        grid: {
+                            color: '#00ffcc22'
+                        },
+                        ticks: {
+                            color: '#00ffcc'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Frequency (Hz)',
+                            color: '#00ffcc'
+                        },
+                        min: 0,
+                        max: 22000, // Max frequency for the chart
+                        grid: {
+                            color: '#00ffcc22'
+                        },
+                        ticks: {
+                            color: '#00ffcc'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#00ffcc'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function updateChart(frequency) {
+        const now = new Date();
+        const timeLabel = now.toLocaleTimeString();
+
+        chartData.push({ time: timeLabel, frequency: frequency });
+
+        if (chartData.length > maxChartDataPoints) {
+            chartData.shift(); // Remove the oldest data point
+        }
+
+        frequencyChart.data.labels = chartData.map(d => d.time);
+        frequencyChart.data.datasets[0].data = chartData.map(d => d.frequency);
+        frequencyChart.update();
+    }
+
+    function updateFrequencyValue(value) {
+      document.getElementById('currentFrequency').innerText = value;
+      // When the slider is moved, update the frequency of the playing sound if it's active
+      if (oscillator && audioCtx && audioCtx.state === 'running') {
+        oscillator.frequency.setValueAtTime(value, audioCtx.currentTime);
+        updateChart(parseFloat(value));
+      }
+    }
+
+    function playCustomFrequency() {
+        const frequency = parseFloat(document.getElementById('frequencySlider').value);
+        if (!audioCtx || audioCtx.state === 'closed') {
+            initAudio();
+        }
+
+        // Stop any existing oscillator to prevent overlapping sounds
+        if (oscillator) {
+            try {
+                oscillator.stop();
+                oscillator.disconnect();
+            } catch (e) {
+                // Oscillator might already be stopped
+            }
+        }
+        initAudio(); // Re-initialize to get a fresh oscillator
+
+        oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+        oscillator.start();
+        updateChart(frequency);
+
+        // Keep the sound playing until explicitly stopped or a new frequency is played
+        // You might want a "Stop" button for this, or a fixed duration.
+        // For now, it will play continuously until another play function is called.
+    }
+
+    function playFixedFrequency(frequency, duration) {
+        if (!audioCtx || audioCtx.state === 'closed') {
+            initAudio();
+        }
+
+        // Stop any existing oscillator
+        if (oscillator) {
+            try {
+                oscillator.stop();
+                oscillator.disconnect();
+            } catch (e) {
+                // Oscillator might already be stopped
+            }
+        }
+        initAudio(); // Re-initialize for a new sound
+
+        oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+        oscillator.start();
+        updateChart(frequency);
+
+        oscillator.stop(audioCtx.currentTime + duration);
+
+        // Reset chart data after the sound stops for fixed duration plays
+        setTimeout(() => {
+            updateChart(0); // Represent no sound playing
+        }, duration * 1000);
+    }
+
+    // Initialize chart when the page loads
+    window.onload = () => {
+        initChart();
+        updateChart(0); // Initial state, no sound playing
+    };
+  </script>
+</div>

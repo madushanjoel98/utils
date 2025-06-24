@@ -8,7 +8,7 @@ var qrPAge = "qrPAge";
 var audioTuner = "audioTuner";
 var foodnutri = "foodnutri";
 var smartdelemter="smartdelemter";
-
+var soundtunerPage = "frequanceTuner";
 
 
 let fileCode = 'json/modulesset.json';
@@ -138,7 +138,12 @@ function loadCommpMorse() {
   location.hash = MoRSEPAGE;
 
 }
+function loadsoundtuner() {
+  $("#connts").toggle();
+  $("#main").load("soundfequance.html");
+  location.hash = soundtunerPage;
 
+  }
 function loadHealth() {
   $("#connts").toggle();
   $("#main").load("health.html");
@@ -217,6 +222,9 @@ function urlHashChecker() {
      case "#" + smartdelemter:
       loadsmartdele();
       break;
+    case "#" + soundtunerPage:
+      loadsoundtuner();
+
     default:
       console.log("No matching case for:", loc);
 
