@@ -75,9 +75,13 @@
     <h1><i class="fa fa-arrow-left" style=" cursor: pointer;" aria-hidden="true" onclick="toogs('whatsch')"></i> Frequency Emitter</h1>
     <p>Adjust Frequency: <input type="range" min="20" max="20000" value="440" id="frequencySlider" oninput="updateFrequencyValue(this.value)"></p>
     <p>Current Frequency: <span id="currentFrequency">440</span> Hz</p>
+
+    <div>
     <button onclick="playFrequency()"><i class="fa-solid fa-play"></i> </button>
     <button onclick="pauseFrequency()"><i class="fa-solid fa-pause"></i> </button>
     <button onclick="stopFrequency()"><i class="fa-solid fa-stop"></i></button>
+    </div>
+
     <button onclick="playFixedFrequency(18000, 3)">Play 18,000 Hz for 3 sec</button>
   </div>
 
