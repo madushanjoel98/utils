@@ -7,61 +7,96 @@ var DNAANLYSIS = "DNAANLYSIS";
 var qrPAge = "qrPAge";
 var audioTuner = "audioTuner";
 var foodnutri = "foodnutri";
-var smartdelemter="smartdelemter";
+var smartdelemter = "smartdelemter";
 var soundtunerPage = "frequanceTuner";
 
 
 let fileCode = 'json/modulesset.json';
+let whatsnewjson = 'json/whatsnew.json';
 let allModules = []; // to store the original list
 
+
+function firstLoader() {
+   $("#whlist").empty();
+  var uid = localStorage.getItem("uid");
+  $.getJSON(whatsnewjson, function (data) {
+    allModules = data.list; // Store the full data for searching
+  
+    if (uid == null) {
+      openModal();
+    }
+    if (uid != data.uuid) {
+      openModal();
+      localStorage.setItem("uid", data.uuid);
+    }
+    allModules.forEach(element => {
+      var layer = `<li class="list-group-item">${element}</li>`;
+      $("#whlist").append(layer);
+    });
+
+  }).fail(function () {
+    console.error("Error loading moduleset.json");
+    
+  });
+
+
+
+}
+function openModal() {
+  document.getElementById('myModal').style.display = 'block';
+}
+
+function closeModal() {
+  document.getElementById('myModal').style.display = 'none';
+}
 // This function loads modules and stores them, then renders them
 function loadFmodules() {
-    HoldOn.open(); // Assuming HoldOn is a loading indicator
-    $("#moduleverse").empty();
+  HoldOn.open(); // Assuming HoldOn is a loading indicator
+  $("#moduleverse").empty();
 
-    $.getJSON(fileCode, function(data) {
-        allModules = data; // Store the full data for searching
-        renderModules(data); // Render all modules initially
-        HoldOn.close();
-    }).fail(function() {
-        console.error("Error loading moduleset.json");
-        HoldOn.close();
-    });
+  $.getJSON(fileCode, function (data) {
+    allModules = data; // Store the full data for searching
+    renderModules(data); // Render all modules initially
+    HoldOn.close();
+  }).fail(function () {
+    console.error("Error loading moduleset.json");
+    HoldOn.close();
+  });
 }
 
 // This function renders the provided list of modules
 function renderModules(modulesToRender) {
-    $("#moduleverse").empty();
-    if (modulesToRender.length === 0) {
-        $("#moduleverse").append("<p>No modules found matching your search.</p>");
-        return;
-    }
-    modulesToRender.forEach(element => {
-        $("#moduleverse").append(createmodelDivs(element)); // Assuming createmodelDivs exists
-    });
+  $("#moduleverse").empty();
+  if (modulesToRender.length === 0) {
+    $("#moduleverse").append("<p>No modules found matching your search.</p>");
+    return;
+  }
+  modulesToRender.forEach(element => {
+    $("#moduleverse").append(createmodelDivs(element)); // Assuming createmodelDivs exists
+  });
 }
 
 // This function handles the search logic
 function onchangesSearch() {
-    const query = $("#moduleSearch").val().toLowerCase();
+  const query = $("#moduleSearch").val().toLowerCase();
 
-    const filtered = allModules.filter(mod =>
-        mod.module_name.toLowerCase().includes(query)
-    );
+  const filtered = allModules.filter(mod =>
+    mod.module_name.toLowerCase().includes(query)
+  );
 
-    console.log("Filtered modules:", filtered); // For debugging
-    renderModules(filtered);
+  console.log("Filtered modules:", filtered); // For debugging
+  renderModules(filtered);
 }
 
 // Initialize the modules when the document is ready
-$(document).ready(function() {
-    loadFmodules();
+$(document).ready(function () {
+  loadFmodules();
 
-    // Attach the event listener for the search input
-    $("#moduleSearch").on("input", onchangesSearch);
+  // Attach the event listener for the search input
+  $("#moduleSearch").on("input", onchangesSearch);
 });
-function createmodelDivs(element){
-const layer = ` <div class="col p-2 m-4 text-white scale-up-top">
+function createmodelDivs(element) {
+  const layer = ` <div class="col p-2 m-4 text-white scale-up-top">
 
 
             <div class="cards ${element.css} shadow" onclick="${element.function_call}">
@@ -88,7 +123,7 @@ const layer = ` <div class="col p-2 m-4 text-white scale-up-top">
 
 
           </div>`;
-          return layer
+  return layer
 
 }
 
@@ -143,7 +178,7 @@ function loadsoundtuner() {
   $("#main").load("soundfequance.html");
   location.hash = soundtunerPage;
 
-  }
+}
 function loadHealth() {
   $("#connts").toggle();
   $("#main").load("health.html");
@@ -219,7 +254,7 @@ function urlHashChecker() {
       loadFoodnutri();
       break;
 
-     case "#" + smartdelemter:
+    case "#" + smartdelemter:
       loadsmartdele();
       break;
     case "#" + soundtunerPage:
