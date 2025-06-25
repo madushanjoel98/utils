@@ -3,7 +3,7 @@
     "module_name": "WhatsApp Chat viewer",
     "image_src": "img/whatsapp.png",
     "function_call": "loadWhatsAppChatter()",
-    "css":"whatsapp"
+    "css":"whatsapp "
   },
   {
     "module_name": "BASE64 Encoder/Decoder",
@@ -46,7 +46,7 @@
     "module_name": "Smart Dele",
     "image_src": "img/table.png",
     "function_call": "loadsmartdele()"
-     ,"css":"dnabg"
+     ,"css":"dnabg "
   },
   {
     "module_name": "Audio Tuner",

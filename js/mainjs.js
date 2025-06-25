@@ -61,7 +61,7 @@ $(document).ready(function() {
     $("#moduleSearch").on("input", onchangesSearch);
 });
 function createmodelDivs(element){
-const layer = ` <div class="col p-2 m-4 text-white">
+const layer = ` <div class="col p-2 m-4 text-white scale-up-top">
 
 
             <div class="cards ${element.css} shadow" onclick="${element.function_call}">
