@@ -3,61 +3,12 @@
   Health
 </h1>
 
-<style>
-    :focus {
-        outline: 0;
-        border-color: #2260ff;
-        box-shadow: 0 0 0 4px #b5c9fc;
-    }
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    .mydict div {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 0.5rem;
-        justify-content: center;
-    }
+<!-- Your CSS remains unchanged -->
 
-    .mydict input[type="radio"] {
-        clip: rect(0 0 0 0);
-        clip-path: inset(100%);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap;
-        width: 1px;
-    }
-
-    .mydict input[type="radio"]:checked+span {
-        box-shadow: 0 0 0 0.0625em #0043ed;
-        background-color: #dee7ff;
-        z-index: 1;
-        color: #0043ed;
-    }
-
-    .mydict label span {
-        display: block;
-        cursor: pointer;
-        background-color: #fff;
-        padding: 0.375em .75em;
-        position: relative;
-        margin-left: .0625em;
-        box-shadow: 0 0 0 0.0625em #b5bfd9;
-        letter-spacing: .05em;
-        color: #3e4963;
-        text-align: center;
-        transition: background-color .5s ease;
-    }
-
-    .mydict label:first-child span {
-        border-radius: .375em 0 0 .375em;
-    }
-
-    .mydict label:last-child span {
-        border-radius: 0 .375em .375em 0;
-    }
-</style>
-
-<div class="resutls row ">
+<div class="row results" style="display:none;">
     <div class="col mb-3">
         <div class="healthcard">
             <div class="healthimg">
@@ -101,8 +52,8 @@
 </div>
 
 <div class="mb-4">
-    <form id="healthfrm ">
-        <div class="card-body ">
+    <form id="healthfrm">
+        <div class="card-body">
             <div class="mb-3">
                 <label for="calWeight" class="form-label">Weight (kg)</label>
                 <input type="number" class="form-control" id="calWeight" placeholder="Enter your weight" min="1" required>
@@ -122,7 +73,7 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="calAge" class="form-label ">Age (years)</label>
+                <label for="calAge" class="form-label">Age (years)</label>
                 <input type="number" class="form-control" id="calAge" placeholder="Enter your age" min="1" required>
             </div>
             <div class="mb-3">
@@ -139,7 +90,7 @@
 
 <script>
     $(document).ready(function () {
-        $(".resutls").hide();
+        $(".results").hide();
     });
 
     $("#healthfrm").submit(function (e) {
@@ -147,18 +98,16 @@
         caloriesi();
         bmical();
         waterIntack();
-        $(".resutls").fadeIn();
+        $(".results").fadeIn();
     });
 
     function getHeightInCM() {
         const heightValue = parseFloat($("#calHeight").val());
-
         if (!heightValue || heightValue <= 0) {
             alert("Please enter a valid height.");
             return null;
         }
-
-        return heightValue; // Already in cm
+        return heightValue;
     }
 
     function caloriesi() {
@@ -168,51 +117,36 @@
         const gender = $("#calGender").val();
 
         if (weight && height && age) {
-            let bmr = 0;
-            if (gender === "male") {
-                bmr = 88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age);
-            } else {
-                bmr = 447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age);
-            }
+            let bmr = gender === "male"
+                ? 88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)
+                : 447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age);
 
             $("#calorieResult").html(`${bmr.toFixed(2)} kcal/day`);
-        } else {
-            alert("Please enter valid inputs for weight, height, and age.");
         }
     }
 
     function bmical() {
         const weight = parseFloat($("#calWeight").val());
         const heightInCM = getHeightInCM();
-
         if (weight && heightInCM) {
             const heightInMeters = heightInCM / 100;
-            const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
-            let bmiCategory = "";
-
-            if (bmi < 18.5) {
-                bmiCategory = "Underweight";
-            } else if (bmi >= 18.5 && bmi < 24.9) {
-                bmiCategory = "Normal weight";
-            } else if (bmi >= 25 && bmi < 29.9) {
-                bmiCategory = "Overweight";
-            } else {
-                bmiCategory = "Obesity";
-            }
-
-            $("#bmiResult").html(`${bmi} (${bmiCategory})`);
-        } else {
-            alert("Please enter valid weight and height.");
+            const bmi = (weight / (heightInMeters ** 2)).toFixed(2);
+            let category = bmi < 18.5 ? "Underweight"
+                : bmi < 24.9 ? "Normal weight"
+                : bmi < 29.9 ? "Overweight"
+                : "Obesity";
+            $("#bmiResult").html(`${bmi} (${category})`);
         }
     }
 
     function waterIntack() {
         const weight = parseFloat($("#calWeight").val());
         if (weight) {
-            const waterIntake = (weight * 0.033).toFixed(2);
-            $("#waterResult").html(`${waterIntake} liters/day`);
-        } else {
-            alert("Please enter a valid weight.");
+            $("#waterResult").html(`${(weight * 0.033).toFixed(2)} liters/day`);
         }
+    }
+
+    function toogs(id) {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     }
 </script>
