@@ -1,37 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ToolSpark</title>
-  <link rel="shortcut icon" href="img/settings.png" image/x-icon" />
+  <title>ToolSpark — Your All-in-One Utility Hub</title>
+  <link rel="shortcut icon" href="img/settings.png" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords"
-    content="Base64 Decoder, Base64 Encoder, WhatsApp Chat Viewer, WhatsApp Reader, WhatsApp Export Viewer, WhatsApp Text Analyzer, Morse Code Converter, Morse Encoder, Morse Decoder, Morse Translator, Encrypt, Decrypt, BMI Calculator, Calories Calculator, Water Intake Calculator, Health Tracker, Health Calculator, Daily Water Needs, Calorie Needs, Weight Management, Fitness Tools, Online Tools, File Reader, Chat Export Viewer, WhatsApp Export Analyzer, BMI Checker, Calorie Counter, Healthy Living, Body Mass Index, Fitness Calculator, Online Encoder, Online Decoder, Encryption Tool, Decryption Tool, Health and Fitness, Wellness Tools,QR,Qr genrator,qr">
-  <link rel="manifest" href="json/manifest.json">
-  <meta name="theme-color" content="#0d6efd">
   <meta name="description"
-    content="Explore ToolSpark versatile online tools, including a WhatsApp Chat Viewer for exported chats, Base64 encoder/decoder, Morse code translator, and more. Fast, secure, and user-friendly utilities for your daily needs">
+    content="Explore ToolSpark's versatile online tools — WhatsApp Chat Viewer, Base64 encoder/decoder, Morse code translator, QR Generator, Health calculators, and more. Fast, secure, and user-friendly.">
+  <meta name="keywords"
+    content="Base64 Decoder, Base64 Encoder, WhatsApp Chat Viewer, WhatsApp Reader, WhatsApp Export Viewer, Morse Code Converter, Morse Encoder, Morse Decoder, Encrypt, Decrypt, BMI Calculator, QR Generator, Health Tracker, Online Tools">
   <meta name="google-site-verification" content="jouBDpAkU1WHX_vq9R_HBq6UGym2Kkrwr_NYwfzkgB8" />
-  <script src="js/jquery.js"></script>
+  <meta name="theme-color" content="#7c6aff">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ToolSpark — Your All-in-One Utility Hub">
+  <meta property="og:description" content="Fast, secure, and user-friendly online utilities.">
+  <meta property="og:type" content="website">
+
+  <link rel="manifest" href="json/manifest.json">
+
+  <!-- Stylesheets -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
     integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="holdon/holdon.css">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css"
-    integrity="sha512-BMbq2It2D3J17/C7aRklzOODG1IQ3+MHw3ifzBHMBwGO/0yUqYmsStgBjI0z5EYlaDEFnvYV7gNYdD3vFLRKsA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="css/main.css" rel="stylesheet">
+
+  <!-- Scripts -->
+  <script src="js/jquery.js"></script>
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <script src="js/encoder.js"></script>
   <script src="js/mainjs.js"></script>
   <script src="js/qrscript.js"></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/ag-charts-enterprise@11.0.0/dist/umd/ag-charts-enterprise.js?t=1733932964813"></script>
-  <script src="/charts/vanilla/radial-gauge/examples/simple-radial-gauge/main.js"></script>
+  <script src="js/dnatool.js"></script>
 
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
@@ -43,115 +47,133 @@
           'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-KC22K3RW');</script>
   <!-- End Google Tag Manager -->
-  <!-- Google tag (gtag.js) -->
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J45NRWLQK"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-6J45NRWLQK');
   </script>
-  <script src="js/dnatool.js"></script>
 </head>
 
 <body>
 
-  <div class="container-fluid ">
-
-<div id="myModal">
-  <div class="modal-content">
-  <h2 class="text-dark">Whats new</h2>
-   <ul class="list-group" id="whlist">
-
-</ul>
-    <button class="close-btn" onclick="closeModal()">Close</button>
+  <!-- "What's New" Modal -->
+  <div id="myModal">
+    <div class="modal-content">
+      <div class="modal-icon">✨</div>
+      <h2>What's New</h2>
+      <ul class="list-group" id="whlist"></ul>
+      <button class="close-btn" onclick="closeModal()">Got it!</button>
+    </div>
   </div>
-</div>
-    
-    <div id="navs">
 
+  <div class="container-fluid">
+
+    <!-- Hero Header -->
+    <header id="site-header">
+      <h1 class="brand-logo tracking-in-expand">ToolSpark</h1>
+      <p class="brand-tagline">Your all-in-one utility hub — fast, secure &amp; beautiful</p>
+    </header>
+
+    <!-- Main Nav / Module Grid -->
+    <div id="navs">
       <div id="connts">
-         <div class="scontainer mt-2">
-          <input onchange="onchangesSearch()" id="moduleSearch" type="text" name="text" class="sinput" required=""
-            placeholder="Type to search...">
-          <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-              <title>Search </title>
-              <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none"
-                stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
-              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"
-                d="M338.29 338.29L448 448"></path>
-            </svg>
+
+        <!-- Search Bar -->
+        <div class="search-wrapper">
+          <div class="scontainer">
+            <input
+              oninput="onchangesSearch()"
+              id="moduleSearch"
+              type="text"
+              name="text"
+              class="sinput"
+              placeholder="Search tools…"
+              autocomplete="off"
+            >
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                <title>Search</title>
+                <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none"
+                  stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"
+                  d="M338.29 338.29L448 448"></path>
+              </svg>
+            </div>
           </div>
         </div>
-   
-        <div class="d-flex flex- row   " id="moduleverse"></div>
+
+        <!-- Module Cards Grid -->
+        <div id="moduleverse"></div>
+
       </div>
-
-
-
-
-
     </div>
 
-    <!-- Your other content goes here (e.g., main content) -->
-    <div id="main">
-
-
-    </div>
+    <!-- Dynamic Tool Content -->
+    <div id="main"></div>
 
   </div>
 
-  <div class="position-fixed" style="width: 60px; height: 60px; bottom: 30px; right: 20px;">
+  <!-- Theme Toggle -->
+  <div class="theme-toggle-wrap">
     <label class="switch">
-      <span class="sun"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <span class="sun">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <g fill="#ffd43b">
             <circle r="5" cy="12" cx="12"></circle>
-            <path
-              d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1 -.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1 -.75.29zm-12.02 12.02a1 1 0 0 1 -.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1 -.7.24zm6.36-14.36a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm0 17a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm-5.66-14.66a1 1 0 0 1 -.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.29zm12.02 12.02a1 1 0 0 1 -.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.24z">
-            </path>
+            <path d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1-.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1-.75.29zm-12.02 12.02a1 1 0 0 1-.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1-.7.24zm6.36-14.36a1 1 0 0 1-1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1-1 1zm0 17a1 1 0 0 1-1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1-1 1zm-5.66-14.66a1 1 0 0 1-.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1-.71.29zm12.02 12.02a1 1 0 0 1-.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1-.71.24z"></path>
           </g>
-        </svg></span>
-      <span class="moon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-          <path
-            d="m223.5 32c-123.5 0-223.5 100.3-223.5 224s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z">
-          </path>
-        </svg></span>
+        </svg>
+      </span>
+      <span class="moon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+          <path d="m223.5 32c-123.5 0-223.5 100.3-223.5 224s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
+        </svg>
+      </span>
       <input id="night" type="checkbox" class="input" onchange="OnchangeDarkmood()">
       <span class="slider"></span>
     </label>
   </div>
 
-  <!-- Load the navbar content using jQuery -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KC22K3RW" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="holdon/holon.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>
+
+  <!-- Buy Me a Coffee Widget -->
+  <script data-name="BMC-Widget" data-cfasync="false"
+    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+    data-id="madushanjoel" data-description="Support me on Buy me a coffee!"
+    data-message="Give a small support if this tools are helpful for you 😊"
+    data-color="#7c6aff" data-position="left"
+    data-x_margin="18" data-y_margin="18"></script>
+
+  <!-- Init -->
   <script>
     $(document).ready(function () {
-      // $("#navs").load("content.html");
       checkDarkMood();
       urlHashChecker();
       loadFmodules();
     });
+
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("js/service-worker.js")
         .then(() => console.log("Service Worker Registered"))
         .catch(error => console.log("Service Worker Registration Failed:", error));
     }
-
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KC22K3RW" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-  <!-- Bootstrap Bundle JS -->
-  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-    data-id="madushanjoel" data-description="Support me on Buy me a coffee!"
-    data-message="Give a small support if this tools are helpful for you 😊" data-color="#40DCA5" data-position="left"
-    data-x_margin="18" data-y_margin="18"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="holdon/holon.js"></script>
-<script>firstLoader();</script>
+  <script>firstLoader();</script>
+
 </body>
 
 </html>

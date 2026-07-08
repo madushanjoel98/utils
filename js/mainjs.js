@@ -68,11 +68,18 @@ function loadFmodules() {
 function renderModules(modulesToRender) {
   $("#moduleverse").empty();
   if (modulesToRender.length === 0) {
-    $("#moduleverse").append("<p>No modules found matching your search.</p>");
+    $("#moduleverse").append(`
+      <div class="empty-state">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <p>No tools found matching your search.</p>
+      </div>`);
     return;
   }
-  modulesToRender.forEach(element => {
-    $("#moduleverse").append(createmodelDivs(element)); // Assuming createmodelDivs exists
+  modulesToRender.forEach((element, index) => {
+    var card = createmodelDivs(element, index);
+    $("#moduleverse").append(card);
   });
 }
 
@@ -95,63 +102,52 @@ $(document).ready(function () {
   // Attach the event listener for the search input
   $("#moduleSearch").on("input", onchangesSearch);
 });
-function createmodelDivs(element) {
-  const layer = ` <div class="col p-2 m-4 text-white scale-up-top">
-
-
-            <div class="cards ${element.css} shadow" onclick="${element.function_call}">
-              <div class="cards-content">
-                <div class="cards-top">
-                  <span class="cards-title">${element.module_name}</span>
-
-                </div>
-                <div class="cards-bottom">
-
-                  <svg width="32" viewBox="0 -960 960 960" height="32" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M226-160q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19ZM226-414q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19ZM226-668q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Z">
-                    </path>
-                  </svg>
-                </div>
-              </div>
-              <div class="cards-image">
-                <img width="58" height="58"
-                  src="${element.image_src}"
-                  alt="external-encryption-cryptocurrency-sbts2018-outline-sbts2018" />
-              </div>
+function createmodelDivs(element, index) {
+  const delay = (index || 0) * 60;
+  const layer = `
+    <div class="tool-card-wrap" style="animation-delay: ${delay}ms">
+      <div class="cards ${element.css}" onclick="${element.function_call}" role="button" tabindex="0" aria-label="Open ${element.module_name}">
+        <div class="card-accent-bar"></div>
+        <div class="card-icon-bg">
+          <img src="${element.image_src}" alt="${element.module_name} icon" loading="lazy" />
+        </div>
+        <div class="cards-content">
+          <div class="cards-top">
+            <span class="cards-title">${element.module_name}</span>
+            <span class="card-badge">Tool</span>
+          </div>
+          <div class="cards-bottom">
+            <span></span>
+            <div class="card-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
             </div>
-
-
-          </div>`;
-  return layer
-
+          </div>
+        </div>
+      </div>
+    </div>`;
+  return layer;
 }
 
 function OnchangeDarkmood() {
   if ($('#night').prop('checked')) {
     localStorage.setItem(darkmode, 1);
-    $("body").addClass("bg-dark text-white");
-    $(".card").addClass("bg-dark text-white");
-    console.log('Checkbox is checked');
+    $("body").removeClass("light-mode");
   } else {
     localStorage.setItem(darkmode, 0);
-    console.log('Checkbox is not checked');
-    $("body").removeClass("bg-dark text-white");
+    $("body").addClass("light-mode");
   }
 }
 
-
 function checkDarkMood() {
-  if (localStorage.getItem(darkmode) == 1) {
-    $('#night').prop('checked', true);
-    $("body").addClass("bg-dark text-white");
-  } else {
-
-    $("body").removeClass("bg-dark text-white");
-
+  if (localStorage.getItem(darkmode) == 0) {
     $('#night').prop('checked', false);
+    $("body").addClass("light-mode");
+  } else {
+    $('#night').prop('checked', true);
+    $("body").removeClass("light-mode");
   }
-
 }
 
 function loadWhatsAppChatter() {
