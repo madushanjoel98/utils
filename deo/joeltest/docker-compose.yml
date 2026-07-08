@@ -1,8 +1,0 @@
-services:
-  joeltest:
-    image: joeltest
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    ports:
-      - 8900:8900
